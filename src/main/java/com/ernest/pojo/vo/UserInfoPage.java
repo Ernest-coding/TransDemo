@@ -47,6 +47,11 @@ public class UserInfoPage implements Serializable {
     private String manPhone;
 
     /**
+     * 客户发出运单数
+     */
+    private Integer cusOrder;
+
+    /**
      * 创建时间
      */
     private LocalDateTime addTime;
