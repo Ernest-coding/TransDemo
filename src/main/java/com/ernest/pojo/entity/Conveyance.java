@@ -2,6 +2,7 @@ package com.ernest.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @author Ernest
  * @since 2022-08-02
  */
+@Repository
 public class Conveyance implements Serializable {
 
     private static final long serialVersionUID = 1L;
