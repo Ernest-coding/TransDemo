@@ -1,13 +1,11 @@
-var localurl="D:\\Learning_File\\Code_Program\\java\\TransDemo\\files\\";
-// var localurl="files\\";
-var serverurl="/usr/local/duan/files/";
-var winPt = "\\";
-var linuxPt = "/";
-$(function (){
+$(function () {
     setImg();
 })
 
-function setImg(){
-    $("#logo-4").attr("src", localurl + "image" + winPt + "logo" + winPt + "logo-4.png");
-    $("#logo-5").attr("src", localurl + "image" + winPt + "logo" + winPt + "logo-5.png");
+/**
+ * /Path/ 映射到实际的路径就是 files/ ，所以直接在 /Path/ 后面接上 files 的子目录就行
+ */
+function setImg() {
+    $("#logo-4").attr("src", "/Path/image/logo/logo-4.png");
+    $("#logo-5").attr("src", "/Path/image/logo/logo-5.png");
 }
