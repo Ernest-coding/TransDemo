@@ -1,9 +1,13 @@
-var localurl="D:\\Learning_File\\Code_Program\\java\\TransDemo\\src\\main\\resources\\templates\\assets\\";
-var serverurl="/usr/local/duan/files/image/";
+var localurl="D:\\Learning_File\\Code_Program\\java\\TransDemo\\files\\";
+// var localurl="files\\";
+var serverurl="/usr/local/duan/files/";
+var winPt = "\\";
+var linuxPt = "/";
 $(function (){
     setImg();
 })
 
 function setImg(){
-    $("#img01").src(localurl + "logo-5.png");
+    $("#logo-4").attr("src", localurl + "image" + winPt + "logo" + winPt + "logo-4.png");
+    $("#logo-5").attr("src", localurl + "image" + winPt + "logo" + winPt + "logo-5.png");
 }
