@@ -42,12 +42,12 @@ public class ArrivalPortInfo implements Serializable {
     /**
      * 到港时间
      */
-    private LocalDateTime arpInTime;
+    private String arpInTime;
 
     /**
      * 离港时间
      */
-    private LocalDateTime arpOutTime;
+    private String arpOutTime;
 
     /**
      * 停港日单价
@@ -93,19 +93,19 @@ public class ArrivalPortInfo implements Serializable {
         this.arpName = arpName;
     }
 
-    public LocalDateTime getArpInTime() {
+    public String getArpInTime() {
         return arpInTime;
     }
 
-    public void setArpInTime(LocalDateTime arpInTime) {
+    public void setArpInTime(String arpInTime) {
         this.arpInTime = arpInTime;
     }
 
-    public LocalDateTime getArpOutTime() {
+    public String getArpOutTime() {
         return arpOutTime;
     }
 
-    public void setArpOutTime(LocalDateTime arpOutTime) {
+    public void setArpOutTime(String arpOutTime) {
         this.arpOutTime = arpOutTime;
     }
 

@@ -50,6 +50,16 @@ public class WayBill implements Serializable {
     private Integer wbSendId;
 
     /**
+     * 发出人姓名
+     */
+    private String wbSendName;
+
+    /**
+     * 发出人手机号
+     */
+    private String wbSendPhone;
+
+    /**
      * 发出地址
      */
     private String wbSendAddress;
@@ -147,6 +157,22 @@ public class WayBill implements Serializable {
 
     public void setWbSendId(Integer wbSendId) {
         this.wbSendId = wbSendId;
+    }
+
+    public String getWbSendName() {
+        return wbSendName;
+    }
+
+    public void setWbSendName(String wbSendName) {
+        this.wbSendName = wbSendName;
+    }
+
+    public String getWbSendPhone() {
+        return wbSendPhone;
+    }
+
+    public void setWbSendPhone(String wbSendPhone) {
+        this.wbSendPhone = wbSendPhone;
     }
 
     public String getWbSendAddress() {

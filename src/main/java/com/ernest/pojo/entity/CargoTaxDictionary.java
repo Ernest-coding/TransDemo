@@ -45,6 +45,11 @@ public class CargoTaxDictionary implements Serializable {
     private BigDecimal ctdTax;
 
     /**
+     * 状态 1-生效  2-删除
+     */
+    private Integer ctdStatus;
+
+    /**
      * 添加时间
      */
     private LocalDateTime addTime;
@@ -84,6 +89,14 @@ public class CargoTaxDictionary implements Serializable {
 
     public void setCtdTax(BigDecimal ctdTax) {
         this.ctdTax = ctdTax;
+    }
+
+    public Integer getCtdStatus() {
+        return ctdStatus;
+    }
+
+    public void setCtdStatus(Integer ctdStatus) {
+        this.ctdStatus = ctdStatus;
     }
 
     public LocalDateTime getAddTime() {
