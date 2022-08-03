@@ -58,7 +58,7 @@ public class WayBillController {
                       @RequestParam(name = "id") Integer id) {
         WayBillDetailPage detail = wbService.detail(id);
         map.put("detail", detail);
-        return "wayBillDetailPage";
+        return "back/wayBillDetailPage";
     }
 
     /*

@@ -115,7 +115,7 @@ public class UserInfoController {
             return "redirect:/user/allCus";
         } else {
             map.put("msg", "用户已存在");
-            return "exPage";
+            return "back/exPage";
         }
     }
 
@@ -139,8 +139,6 @@ public class UserInfoController {
             map.put("msg", "您没有权限！");
             return "back/exPage";
         }
-
-        userInfoService.setInfo(type, id, op, info);
         return (type == 1) ? "redirect:/user/allMan" : "redirect:/user/allCus";
     }
 }
