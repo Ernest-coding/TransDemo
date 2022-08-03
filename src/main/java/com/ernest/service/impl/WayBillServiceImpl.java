@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -164,6 +165,22 @@ public class WayBillServiceImpl implements IWayBillService {
                 break;
         }
 
+    }
+
+    @Override
+    public void setWbInfo(Integer wbId, String wbReceName, String wbRecePhone,
+                          String wbReceAddress, String wbReceTime, String wbPrice,
+                          Integer wbStatus, String wbInfo) {
+        WayBill wb = wbMapper.selectOne(new QueryWrapper<WayBill>().eq("wb_id", wbId));
+        wb.setWbReceName(wbReceName);
+        wb.setWbRecePhone(wbRecePhone);
+        wb.setWbReceAddress(wbReceAddress);
+        // TODO 解析时间串
+//        wb.setWbReceTime(wbReceTime);
+        wb.setWbPrice(new BigDecimal(wbPrice));
+        wb.setWbStatus(wbStatus);
+        wb.setWbInfo(wbInfo);
+        wbMapper.updateById(wb);
     }
 
     @Override

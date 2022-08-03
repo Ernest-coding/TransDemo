@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.management.relation.RelationNotFoundException;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -273,6 +274,43 @@ public class WayBillController {
             return "exPage";
         }
         wbService.delOth(op, id);
+        attr.addAttribute("id", wbId);
+        return "redirect:/wb/one";
+    }
+
+    /**
+     * 修改运单基本信息
+     *
+     * @param attr
+     * @param map
+     * @param session
+     * @param wbId          运单 id
+     * @param wbReceName    收件人信息，下同
+     * @param wbRecePhone
+     * @param wbReceAddress
+     * @param wbReceTime
+     * @param wbPrice       运单价格
+     * @param wbStatus      运单状态
+     * @param wbInfo        运单说明信息
+     * @return
+     */
+    @GetMapping("/setWbInfo")
+    public String setWbInfo(RedirectAttributes attr, ModelMap map, HttpSession session,
+                            @RequestParam(name = "wbId") Integer wbId,
+                            @RequestParam(name = "wbReceName") String wbReceName,
+                            @RequestParam(name = "wbRecePhone") String wbRecePhone,
+                            @RequestParam(name = "wbReceAddress") String wbReceAddress,
+                            @RequestParam(name = "wbReceTime") String wbReceTime,
+                            @RequestParam(name = "wbPrice") String wbPrice,
+                            @RequestParam(name = "wbStatus") Integer wbStatus,
+                            @RequestParam(name = "wbInfo") String wbInfo) {
+        if (!("1".equals(session.getAttribute("type")) &&
+                "1".equals(session.getAttribute("limit")))) {
+            map.put("msg", "您没有权限！");
+            return "exPage";
+        }
+        wbService.setWbInfo(wbId, wbReceName, wbRecePhone, wbReceAddress, wbReceTime,
+                wbPrice, wbStatus, wbInfo);
         attr.addAttribute("id", wbId);
         return "redirect:/wb/one";
     }

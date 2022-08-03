@@ -33,4 +33,8 @@ public interface IWayBillService {
     void delWb(Integer id);
 
     void delOth(Integer op, Integer id);
+
+    void setWbInfo(Integer wbId, String wbReceName, String wbRecePhone,
+                   String wbReceAddress, String wbReceTime, String wbPrice,
+                   Integer wbStatus, String wbInfo);
 }
