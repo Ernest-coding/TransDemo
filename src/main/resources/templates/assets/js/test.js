@@ -18,7 +18,7 @@ function setImg() {
 
 
 
-
+    $("#logo").attr("src", "/Path/image/logo/logo.png");
     $("#logo-4").attr("src", "/Path/image/logo/logo-4.png");
     $("#logo-5").attr("src", "/Path/image/logo/logo-5.png");
 
