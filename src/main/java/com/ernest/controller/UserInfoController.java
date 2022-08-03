@@ -115,11 +115,11 @@ public class UserInfoController {
             map.put("msg", "您没有权限！");
             return "exPage";
         }
-        OpStaEnum result = userInfoService.addCus(name, phone);
-        if (result == OpStaEnum.SUCCESS) {
+        int result = userInfoService.addCus(name, phone, 0);
+        if (result == 1) {
             return "redirect:/user/allCus";
         } else {
-            map.put("msg", result.getStatus());
+            map.put("msg", "用户已存在");
             return "exPage";
         }
     }

@@ -107,12 +107,12 @@ public class UserInfoServiceImpl implements IUserInfoService {
     }
 
     @Override
-    public OpStaEnum addCus(String name, String phone) {
+    public int addCus(String name, String phone, int order) {
         Customer check = customerMapper.selectOne(new QueryWrapper<Customer>()
                 .eq("cus_name", name)
                 .eq("cus_phone", phone));
         if (check != null) {
-            return OpStaEnum.HASEXIST;
+            return 0;
         }
         Customer user = new Customer();
         user.setCusAct(phone);
@@ -121,8 +121,8 @@ public class UserInfoServiceImpl implements IUserInfoService {
         user.setCusSalt(salt);
         user.setCusName(name);
         user.setCusPhone(phone);
-        int insert = customerMapper.insert(user);
-        return (insert == 1) ? OpStaEnum.SUCCESS : OpStaEnum.NOTKNOW;
+        user.setCusOrder(order);
+        return customerMapper.insert(user);
     }
 
     @Override

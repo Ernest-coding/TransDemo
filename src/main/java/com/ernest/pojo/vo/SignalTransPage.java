@@ -1,5 +1,6 @@
 package com.ernest.pojo.vo;
 
+import com.ernest.pojo.entity.Conveyance;
 import com.ernest.pojo.entity.SignalTrans;
 import lombok.Data;
 import org.springframework.stereotype.Repository;
@@ -32,4 +33,9 @@ public class SignalTransPage extends SignalTrans {
      * 运单目的地
      */
     private String receAdd;
+
+    /**
+     * 运输工具信息
+     */
+    private Conveyance conveyance;
 }

@@ -24,7 +24,7 @@ public interface IUserInfoService {
 
     OpStaEnum addMan(String act, String pwd, Integer type, String name, String phone);
 
-    OpStaEnum addCus(String name, String phone);
+    int addCus(String name, String phone, int order);
 
     void setInfo(Integer type, Integer id, Integer op, String info);
 }

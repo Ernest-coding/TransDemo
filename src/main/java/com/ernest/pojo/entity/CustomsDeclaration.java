@@ -52,12 +52,12 @@ public class CustomsDeclaration implements Serializable {
     /**
      * 报关开始时间
      */
-    private LocalDateTime ctdStartTime;
+    private String ctdStartTime;
 
     /**
      * 报关结束时间
      */
-    private LocalDateTime ctdFinishTime;
+    private String ctdFinishTime;
 
     /**
      * 添加时间
@@ -109,19 +109,19 @@ public class CustomsDeclaration implements Serializable {
         this.ctdPrice = ctdPrice;
     }
 
-    public LocalDateTime getCtdStartTime() {
+    public String getCtdStartTime() {
         return ctdStartTime;
     }
 
-    public void setCtdStartTime(LocalDateTime ctdStartTime) {
+    public void setCtdStartTime(String ctdStartTime) {
         this.ctdStartTime = ctdStartTime;
     }
 
-    public LocalDateTime getCtdFinishTime() {
+    public String getCtdFinishTime() {
         return ctdFinishTime;
     }
 
-    public void setCtdFinishTime(LocalDateTime ctdFinishTime) {
+    public void setCtdFinishTime(String ctdFinishTime) {
         this.ctdFinishTime = ctdFinishTime;
     }
 

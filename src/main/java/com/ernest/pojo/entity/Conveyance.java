@@ -37,6 +37,11 @@ public class Conveyance implements Serializable {
     private String coyPrincipalPhone;
 
     /**
+     * 运输工具名称
+     */
+    private String coyName;
+
+    /**
      * 运输工具类型   1-空运  2-海运   3-陆运
      */
     private Integer coyType;
@@ -93,6 +98,14 @@ public class Conveyance implements Serializable {
 
     public void setCoyPrincipalPhone(String coyPrincipalPhone) {
         this.coyPrincipalPhone = coyPrincipalPhone;
+    }
+
+    public String getCoyName() {
+        return coyName;
+    }
+
+    public void setCoyName(String coyName) {
+        this.coyName = coyName;
     }
 
     public Integer getCoyType() {
