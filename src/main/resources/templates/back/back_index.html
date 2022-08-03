@@ -8,7 +8,7 @@
     <meta content="" name="author">
     <meta content="" name="robots">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="易约--管理端" name="description">
+    <meta content="后台管理" name="description">
 
     <!-- PAGE TITLE HERE -->
     <title>后台管理</title>
@@ -26,7 +26,7 @@
         Nav header start
     ***********************************-->
 <div class="nav-header">
-    <a class="brand-logo" th:href="@{/man/index}">
+    <a class="brand-logo" th:href="@{/backIndex}">
         <img alt="logo" class="img-thumbnail" style="width: 70%; height: auto" th:src="@{/image/logo-4.png}">
     </a>
     <div class="nav-control">
@@ -79,8 +79,8 @@
                     <span class="nav-text">用户管理</span>
                 </a>
                     <ul aria-expanded="false">
-                        <li><a th:href="@{/addUser}">添加用户</a></li>
-                        <li><a th:href="@{/allUser}">用户管理</a></li>
+                        <li><a th:href="@{/user/allMan}">后台人员</a></li>
+                        <li><a th:href="@{/user/allCus}">客户</a></li>
                     </ul>
 
                 </li>

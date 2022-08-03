@@ -245,10 +245,9 @@ public class WayBillController {
     @GetMapping("/delWb")
     public String delWb(HttpSession session, ModelMap map,
                         @RequestParam(name = "id") Integer id) {
-        if (!("1".equals(session.getAttribute("type")) &&
-                "1".equals(session.getAttribute("limit")))) {
+        if ("2".equals(session.getAttribute("limit"))) {
             map.put("msg", "您没有权限！");
-            return "exPage";
+            return "back/exPage";
         }
         wbService.delWb(id);
         return "redirect:/wb/all";
@@ -268,10 +267,9 @@ public class WayBillController {
                          @RequestParam(name = "op") Integer op,
                          @RequestParam(name = "id") Integer id,
                          @RequestParam(name = "wbId") Integer wbId) {
-        if (!("1".equals(session.getAttribute("type")) &&
-                "1".equals(session.getAttribute("limit")))) {
+        if ("2".equals(session.getAttribute("limit"))) {
             map.put("msg", "您没有权限！");
-            return "exPage";
+            return "back/exPage";
         }
         wbService.delOth(op, id);
         attr.addAttribute("id", wbId);
@@ -304,10 +302,9 @@ public class WayBillController {
                             @RequestParam(name = "wbPrice") String wbPrice,
                             @RequestParam(name = "wbStatus") Integer wbStatus,
                             @RequestParam(name = "wbInfo") String wbInfo) {
-        if (!("1".equals(session.getAttribute("type")) &&
-                "1".equals(session.getAttribute("limit")))) {
+        if ("2".equals(session.getAttribute("limit"))) {
             map.put("msg", "您没有权限！");
-            return "exPage";
+            return "back/exPage";
         }
         wbService.setWbInfo(wbId, wbReceName, wbRecePhone, wbReceAddress, wbReceTime,
                 wbPrice, wbStatus, wbInfo);

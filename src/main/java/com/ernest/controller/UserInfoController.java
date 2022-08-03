@@ -6,10 +6,7 @@ import com.ernest.service.IUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -42,7 +39,7 @@ public class UserInfoController {
         map.put("type", session.getAttribute("type"));
         map.put("limit", session.getAttribute("limit"));
         map.put("userList", result);
-        return "allManPage";
+        return "back/allManPage";
     }
 
     /**
@@ -61,7 +58,7 @@ public class UserInfoController {
         map.put("type", session.getAttribute("type"));
         map.put("limit", session.getAttribute("limit"));
         map.put("userList", result);
-        return "allCusPage";
+        return "back/allCusPage";
     }
 
     /**
@@ -83,17 +80,16 @@ public class UserInfoController {
                          @RequestParam(name = "type") Integer type,
                          @RequestParam(name = "name") String name,
                          @RequestParam(name = "phone") String phone) {
-        if (!("1".equals(session.getAttribute("type")) &&
-                "1".equals(session.getAttribute("limit")))) {
+        if ("2".equals(session.getAttribute("limit"))) {
             map.put("msg", "您没有权限！");
-            return "exPage";
+            return "back/exPage";
         }
         OpStaEnum result = userInfoService.addMan(act, pwd, type, name, phone);
         if (result == OpStaEnum.SUCCESS) {
             return "redirect:/user/allMan";
         } else {
             map.put("msg", result.getStatus());
-            return "exPage";
+            return "back/exPage";
         }
     }
 
@@ -110,10 +106,9 @@ public class UserInfoController {
     public String addCus(ModelMap map, HttpSession session,
                          @RequestParam(name = "name") String name,
                          @RequestParam(name = "phone") String phone) {
-        if (!("1".equals(session.getAttribute("type")) &&
-                "1".equals(session.getAttribute("limit")))) {
+        if ("2".equals(session.getAttribute("limit"))) {
             map.put("msg", "您没有权限！");
-            return "exPage";
+            return "back/exPage";
         }
         int result = userInfoService.addCus(name, phone, 0);
         if (result == 1) {
@@ -134,16 +129,17 @@ public class UserInfoController {
      * @param info    更新信息，对应 op ，相关的详细信息
      * @return 还是跳转到列表页，默认成功
      */
-    @PostMapping("/setInfo")
+    @GetMapping("/setInfo")
     public String setInfo(ModelMap map, HttpSession session,
                           @RequestParam(name = "type") Integer type,
                           @RequestParam(name = "id") Integer id,
                           @RequestParam(name = "op") Integer op,
                           @RequestParam(name = "info") String info) {
-        if (!"1".equals(session.getAttribute("type"))) {
+        if ("2".equals(session.getAttribute("limit"))) {
             map.put("msg", "您没有权限！");
-            return "exPage";
+            return "back/exPage";
         }
+
         userInfoService.setInfo(type, id, op, info);
         return (type == 1) ? "redirect:/user/allMan" : "redirect:/user/allCus";
     }

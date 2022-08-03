@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <meta content="" name="robots">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Innap : Hotel Admin Template" name="description">
+
+    <!-- PAGE TITLE HERE -->
+    <title>后台管理</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+
+</head>
+
+<body class="vh-100">
+<div class="authincation h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="authincation-content">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+
+                                <div class="row">
+                                    <div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="alert alert-primary alert-dismissible fade show"
+                                                     style="display: inherit">
+                                                    <svg class="me-2" fill="none" height="24"
+                                                         stroke="currentColor" stroke-linecap="round"
+                                                         stroke-linejoin="round"
+                                                         stroke-width="2" viewbox="0 0 24 24" width="24">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                                        <line x1="9" x2="9.01" y1="9" y2="9"></line>
+                                                        <line x1="15" x2="15.01" y1="9" y2="9"></line>
+                                                    </svg>
+                                                    <strong>请设置一个你熟悉的密码! </strong>别再忘了......
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="text-center mb-4">修改密码</h4>
+                                <form id="regForm" method="post" th:action="@{/forgot.do}">
+                                    <div class="mb-3">
+                                        <label class="mb-1"><strong>账号</strong></label>
+                                        <input class="form-control" id="act" name="act" placeholder="请输入账号"
+                                               type="text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="mb-1"><strong>手机号码</strong></label>
+                                        <input class="form-control" id="phone" name="phone" placeholder="请输入手机号"
+                                               type="tel">
+                                    </div>
+                                    <!--<div class="mb-3">
+                                        <label class="mb-1"><strong>学工号</strong></label>
+                                        <input class="form-control" id="uid" name="uid" placeholder="请输入学号或工号"
+                                               th:value="${idMsg}?${idMsg}:''" type="text">
+                                    </div>-->
+
+                                    <!--<div class="mb-3">
+                                        <label class="mb-1"><strong>验证码</strong></label>
+                                        <div class="basic-form">
+                                            <div class="input-group mb-3">
+                                                <input class="form-control" id="inputCode" name="code"
+                                                       placeholder="请输入验证码"
+                                                       type="text">
+                                                <button class="btn btn-primary" id="getCode" type="button">获取验证码
+                                                </button>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                请输入验证码
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    <div class="mb-3">
+                                        <label class="mb-1"><strong>新密码</strong></label>
+                                        <input class="form-control" id="password" name="newPwd" placeholder="新密码"
+                                               type="password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="mb-1"><strong>身份</strong></label>
+                                        <select class="  form-control wide mb-3" id="identify" name="type">
+                                            <option selected="selected" value="1">管理员</option>
+                                            <option value="2">客户</option>
+                                        </select>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-primary btn-block" id="reg_sub" type="submit">修改密码
+                                        </button>
+                                    </div>
+                                </form>
+                                <div class="new-account mt-3">
+                                    <p>修改完成! <a class="text-primary" th:href="@{/login}">去登录</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--**********************************
+	Scripts
+***********************************-->
+<!-- Required vendors -->
+<script th:src="@{/js/global.min.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/custom.min.js}"></script>
+<script th:src="@{/js/deznav-init.js}"></script>
+<script th:src="@{/js/styleSwitcher.js}"></script>
+<script th:src="@{/js/proj/userControl.js}"></script>
+</body>
+</html>

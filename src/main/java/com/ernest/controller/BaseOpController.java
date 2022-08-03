@@ -4,6 +4,7 @@ import com.ernest.pojo.bo.OpStaEnum;
 import com.ernest.service.IBaseOpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,16 @@ public class BaseOpController {
     @Autowired
     private IBaseOpService baseOpService;
 
+    @GetMapping("man")
+    public String toLogin() {
+        return "back/login";
+    }
+
+    @GetMapping("forgot")
+    public String toForgot() {
+        return "back/forgot";
+    }
+
 
     /**
      * 登录
@@ -37,18 +48,36 @@ public class BaseOpController {
      * @param type    账号类型  1-后台人员  2-客户
      * @return 登录是否成功，成功直接跳转后台主页，失败则返回本页面，同时携带失败信息
      */
-    @PostMapping("login")
+    @PostMapping("login.do")
     public String login(HttpSession session, ModelMap map,
                         @RequestParam(name = "act") String act,
                         @RequestParam(name = "pwd") String pwd,
                         @RequestParam(name = "type") Integer type) {
         OpStaEnum result = baseOpService.login(session, act, pwd, type);
         if (result == OpStaEnum.SUCCESS) {
-            return "back_index";
+            return "redirect:/backIndex";
         } else {
+            map.put("act", act);
+            map.put("pwd", pwd);
+            map.put("type", type);
+            map.put("welInfo", "display:none");
+            map.put("sucInfo", "display:none");
+            map.put("errInfo", "display:inherit");
             map.put("msg", result.getStatus());
-            return "login";
+            return "back/login";
         }
+    }
+
+    /**
+     * 后台主页请求
+     *
+     * @param map
+     * @return
+     */
+    @GetMapping("backIndex")
+    public String toBackIndex(ModelMap map) {
+
+        return "back/back_index";
     }
 
     /**
@@ -61,7 +90,7 @@ public class BaseOpController {
      * @param type  账号类型 1-后台人员  2-客户
      * @return 修改是否成功，成功直接跳转登录页面，失败则返回本页面，同时携带失败信息
      */
-    @PostMapping("forgot")
+    @PostMapping("forgot.do")
     public String forgot(ModelMap map,
                          @RequestParam(name = "act") String act,
                          @RequestParam(name = "newPwd") String pwd,
@@ -70,10 +99,10 @@ public class BaseOpController {
         OpStaEnum result = baseOpService.forgot(act, pwd, phone, type);
         if (result == OpStaEnum.SUCCESS) {
             map.put("msg", "密码修改成功");
-            return "login";
+            return "back/login";
         } else {
             map.put("msg", result.getStatus());
-            return "forgot";
+            return "back/forgot";
         }
     }
 

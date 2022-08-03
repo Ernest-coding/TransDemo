@@ -8,6 +8,8 @@ import com.ernest.pojo.entity.Manager;
 import com.ernest.mapper.ManagerMapper;
 import com.ernest.service.IBaseOpService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ernest.util.DebugSoutUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpSession;
  * @since 2022-08-02
  */
 @Service
+@Slf4j
 public class BaseOpServiceImpl implements IBaseOpService {
 
     @Autowired
@@ -55,7 +58,7 @@ public class BaseOpServiceImpl implements IBaseOpService {
             String checkPwd = getMd5Password(pwd, user.getCusSalt());
             if (checkPwd.equals(user.getCusPwd())) {
                 // 密码正确
-                writeSession(session, user.getCusId(), user.getCusAct(), user.getCusName(), 1, 0);
+                writeSession(session, user.getCusId(), user.getCusAct(), user.getCusName(), 2, 0);
                 return OpStaEnum.SUCCESS;
             } else {
                 return OpStaEnum.WRONGPWD;
@@ -102,9 +105,11 @@ public class BaseOpServiceImpl implements IBaseOpService {
         session.setAttribute("type", type);
         session.setAttribute("limit", limit);
         session.setMaxInactiveInterval(1800);
+        log.debug(DebugSoutUtils.soutDebugInfo() + "====>  用户登录");
+        System.out.println(DebugSoutUtils.soutDebugInfo() + "====>  用户登录");
     }
 
-    
+
     public String getMd5Password(String password, String salt) {
         /*
          * 加密规则：

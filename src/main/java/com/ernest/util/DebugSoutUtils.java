@@ -26,8 +26,12 @@ public class DebugSoutUtils {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
         return "[ " + sdf.format(date) + " ]  id: " +
-                session.getAttribute("uId").toString() +
-                " name: " + session.getAttribute("uName") + "\t";
+                session.getAttribute("id").toString() +
+                " act: " + session.getAttribute("act") +
+                " name: " + session.getAttribute("name") +
+                " type: " + session.getAttribute("type") +
+                " limit: " + session.getAttribute("limit") +
+                "\t";
     }
 
     /**
