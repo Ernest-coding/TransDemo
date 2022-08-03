@@ -23,4 +23,8 @@ public interface IConveyanceService {
     ConveyanceListPage oneCoyBaseInfo(Integer id);
 
     List<SignalTransPage> oneCoySignalTrans(Integer id);
+
+    void addCoy(Conveyance entity);
+
+    void setInfo(Integer id, Integer op, String info);
 }

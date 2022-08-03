@@ -61,6 +61,24 @@ public class ConveyanceServiceImpl implements IConveyanceService {
         return result;
     }
 
+    @Override
+    public void addCoy(Conveyance entity) {
+        conveyanceMapper.insert(entity);
+    }
+
+    @Override
+    public void setInfo(Integer id, Integer op, String info) {
+        Conveyance coy = conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("coy_id", id));
+        switch (op) {
+            case 0:
+                coy.setCoyStatus(5);
+                conveyanceMapper.updateById(coy);
+                break;
+            default:
+                break;
+        }
+    }
+
     /**
      * do 转 vo
      *

@@ -131,6 +131,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
             Manager user = managerMapper.selectOne(new QueryWrapper<Manager>().eq("man_id", id));
             switch (op) {
                 case 0:
+                    user.setManStatus(2);
                     managerMapper.deleteById(user);
                     break;
                 case 1:
