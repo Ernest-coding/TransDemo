@@ -272,6 +272,7 @@
 <!--                                        <th class="align-middle text-center">负责人联系方式</th>-->
                                         <th class="align-middle text-center">运输类型</th>
                                         <th class="align-middle text-center">更新时间</th>
+                                        <th class="align-middle text-center">查看运次</th>
                                         <th class="no-sort text-center">操作</th>
                                     </tr>
                                     </thead>
@@ -303,6 +304,10 @@
                                             <span th:class="${info.coyTypeStrTheme}" th:text="${info.coyTypeStr}">#</span>
                                         </td>
                                         <td class="py-2 text-center" th:text="${info.updTime}">#</td>
+                                        <td class="py-2 text-center" >
+                                            <a th:href="@{/coy/oneCoy(id=${info.coyId})}" >
+                                                <button class="badge badge-primary">查看</button></a>
+                                        </td>
                                         <!--<td class=py-2 text-center><span class="badge light badge-danger">否</span></td>-->
                                         <td class="py-2 text-center">
                                             <div class="dropdown text-sans-serif">
