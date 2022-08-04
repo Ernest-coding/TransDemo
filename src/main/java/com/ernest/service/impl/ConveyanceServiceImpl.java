@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,11 +74,21 @@ public class ConveyanceServiceImpl implements IConveyanceService {
         switch (op) {
             case 0:
                 coy.setCoyStatus(5);
-                conveyanceMapper.updateById(coy);
+                break;
+            case 1:
+                coy.setCoyName(info);
+                break;
+            case 2:
+                coy.setCoyLicense(info);
+                break;
+            case 3:
+                coy.setCoyType(Integer.valueOf(info));
                 break;
             default:
                 break;
         }
+        coy.setUpdTime(LocalDateTime.now());
+        conveyanceMapper.updateById(coy);
     }
 
     /**
