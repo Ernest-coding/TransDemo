@@ -1,5 +1,6 @@
 package com.ernest.controller;
 
+import com.ernest.pojo.bo.OpStaEnum;
 import com.ernest.pojo.entity.Conveyance;
 import com.ernest.pojo.entity.SignalTrans;
 import com.ernest.pojo.vo.ConveyanceListPage;
@@ -47,7 +48,7 @@ public class ConveyanceController {
         map.put("type", session.getAttribute("type"));
         map.put("limit", session.getAttribute("limit"));
         map.put("coys", result);
-        return "allCoyPage";
+        return "back/allCoyPage";
     }
 
     /**
@@ -63,7 +64,7 @@ public class ConveyanceController {
         List<SignalTransPage> transList = conveyanceService.oneCoySignalTrans(id);
         map.put("baseInfo", baseInfo);
         map.put("transList", transList);
-        return "oneCoyDetail";
+        return "back/oneCoyDetail";
     }
 
     /**
@@ -79,13 +80,18 @@ public class ConveyanceController {
      * @return
      */
     @PostMapping("/add")
-    public String add(ModelMap map,
+    public String add(ModelMap map, HttpSession session,
                       @RequestParam(name = "userName") String userName,
                       @RequestParam(name = "userPhone") String userPhone,
                       @RequestParam(name = "type") Integer type,
                       @RequestParam(name = "license") String license,
                       @RequestParam(name = "address") String address,
                       @RequestParam(name = "other") String other) {
+        if ("2".equals(session.getAttribute("limit"))) {
+            map.put("msg", "您没有权限！");
+            return "back/exPage";
+        }
+
         Conveyance entity = new Conveyance();
         entity.setCoyPrincipalName(userName);
         entity.setCoyPrincipalPhone(userPhone);
@@ -108,10 +114,14 @@ public class ConveyanceController {
      * @return
      */
     @GetMapping("/setInfo")
-    public String setInfo(ModelMap map,
+    public String setInfo(ModelMap map, HttpSession session,
                           @RequestParam(name = "id") Integer id,
                           @RequestParam(name = "op") Integer op,
                           @RequestParam(name = "info") String info) {
+        if ("2".equals(session.getAttribute("limit"))) {
+            map.put("msg", "您没有权限！");
+            return "back/exPage";
+        }
         conveyanceService.setInfo(id, op, info);
         return "redirect:/coy/oneCoy";
     }
