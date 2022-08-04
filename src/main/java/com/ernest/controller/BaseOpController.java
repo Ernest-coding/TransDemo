@@ -53,6 +53,10 @@ public class BaseOpController {
                         @RequestParam(name = "act") String act,
                         @RequestParam(name = "pwd") String pwd,
                         @RequestParam(name = "type") Integer type) {
+        if (type == 2) {
+            map.put("msg", "您没有权限！");
+            return "/back/exPage";
+        }
         OpStaEnum result = baseOpService.login(session, act, pwd, type);
         if (result == OpStaEnum.SUCCESS) {
             return "redirect:/backIndex";
