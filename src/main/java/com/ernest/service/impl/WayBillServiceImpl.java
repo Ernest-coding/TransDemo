@@ -3,15 +3,19 @@ package com.ernest.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ernest.mapper.*;
 import com.ernest.pojo.entity.*;
+import com.ernest.pojo.vo.SignalTransPage;
 import com.ernest.pojo.vo.WayBillDetailPage;
+import com.ernest.service.IConveyanceService;
 import com.ernest.service.IUserInfoService;
 import com.ernest.service.IWayBillService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +27,7 @@ import java.util.List;
  * @since 2022-08-02
  */
 @Service
+@Slf4j
 public class WayBillServiceImpl implements IWayBillService {
 
     @Autowired
@@ -43,6 +48,8 @@ public class WayBillServiceImpl implements IWayBillService {
     private CustomerMapper customerMapper;
     @Autowired
     private IUserInfoService userInfoService;
+    @Autowired
+    private IConveyanceService conveyanceService;
 
     @Override
     public List<WayBill> all() {
@@ -59,13 +66,19 @@ public class WayBillServiceImpl implements IWayBillService {
         result.setCargoInfo(cargoInfoMapper.selectOne(
                 new QueryWrapper<CargoInfo>().eq("cgi_id", wb.getWbCgiId())));
         // 3. 运次列表信息
-        result.setSignalTransList(signalTransMapper.selectList(
-                new QueryWrapper<SignalTrans>().eq("sig_wb_id", wb.getWbId())));
+        ArrayList<SignalTransPage> stp = new ArrayList<>();
+        for (SignalTrans st :
+                signalTransMapper.selectList(new QueryWrapper<SignalTrans>().eq("sig_wb_id", wb.getWbId()))) {
+            stp.add(conveyanceService.convertToSignalTransPage(st));
+        }
+        result.setSignalTransList(stp);
+
+
         // 4. 到港信息列表
         result.setArrivalPortInfo(arrivalPortInfoMapper.selectList(
                 new QueryWrapper<ArrivalPortInfo>().eq("arp_wb_id", wb.getWbId())));
         // 5. 报关信息
-        result.setCustomsDeclaration(customsDeclarationMapper.selectOne(
+        result.setCustomsDeclaration(customsDeclarationMapper.selectList(
                 new QueryWrapper<CustomsDeclaration>().eq("ctd_wb_id", wb.getWbId())));
         result.setConveyanceList(conveyanceMapper.selectList(
                 new QueryWrapper<Conveyance>().ne("coy_status", 5)));
@@ -185,10 +198,11 @@ public class WayBillServiceImpl implements IWayBillService {
 
     @Override
     public void addTran(SignalTrans signalTrans) {
+        log.info("添加了一个运次  " + signalTrans.toString());
         signalTransMapper.insert(signalTrans);
         // 这里要设置对应交通工具的状态
         Conveyance coy = conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("coy_id", signalTrans.getSigCoyId()));
-        coy.setCoyStatus(2);
+        coy.setCoyStatus((signalTrans.getSigStatus() == 1) ? 2 : 1);
         conveyanceMapper.updateById(coy);
         // 同时更新运单状态
         WayBill wb = wbMapper.selectOne(new QueryWrapper<WayBill>().eq("wb_id", signalTrans.getSigWbId()));
@@ -200,6 +214,7 @@ public class WayBillServiceImpl implements IWayBillService {
 
     @Override
     public void addCtd(CustomsDeclaration ctd) {
+        log.info("添加了一个报关信息  " + ctd.toString());
         customsDeclarationMapper.insert(ctd);
         // 这里要对应设置运单的状态
         WayBill wb = wbMapper.selectOne(new QueryWrapper<WayBill>().eq("wb_id", ctd.getCtdWbId()));
@@ -209,6 +224,7 @@ public class WayBillServiceImpl implements IWayBillService {
 
     @Override
     public void addArr(ArrivalPortInfo arr) {
+        log.info("添加了一个到港信息  " + arr.toString());
         arrivalPortInfoMapper.insert(arr);
         // 这里要对应设置运单的状态
         WayBill wb = wbMapper.selectOne(new QueryWrapper<WayBill>().eq("wb_id", arr.getArpWbId()));

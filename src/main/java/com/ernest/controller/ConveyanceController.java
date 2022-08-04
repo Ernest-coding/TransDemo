@@ -85,6 +85,7 @@ public class ConveyanceController {
                       @RequestParam(name = "coyName") String coyName,
                       @RequestParam(name = "userName") String userName,
                       @RequestParam(name = "userPhone") String userPhone,
+                      @RequestParam(name = "name") String name,
                       @RequestParam(name = "type") Integer type,
                       @RequestParam(name = "license") String license,
                       @RequestParam(name = "address") String address,
@@ -98,6 +99,7 @@ public class ConveyanceController {
         entity.setCoyPrincipalName(coyName);
         entity.setCoyPrincipalName(userName);
         entity.setCoyPrincipalPhone(userPhone);
+        entity.setCoyName(name);
         entity.setCoyType(type);
         entity.setCoyStatus(1);
         entity.setCoyLicense(license);

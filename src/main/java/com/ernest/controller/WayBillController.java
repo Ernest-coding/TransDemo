@@ -58,7 +58,7 @@ public class WayBillController {
                       @RequestParam(name = "id") Integer id) {
         WayBillDetailPage detail = wbService.detail(id);
         map.put("detail", detail);
-        return "wayBillDetailPage";
+        return "back/wayBillDetailPage";
     }
 
     /*
@@ -292,7 +292,7 @@ public class WayBillController {
      * @param wbInfo        运单说明信息
      * @return
      */
-    @GetMapping("/setWbInfo")
+    @PostMapping("/setWbInfo")
     public String setWbInfo(RedirectAttributes attr, ModelMap map, HttpSession session,
                             @RequestParam(name = "wbId") Integer wbId,
                             @RequestParam(name = "wbReceName") String wbReceName,
