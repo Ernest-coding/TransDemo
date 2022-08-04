@@ -173,6 +173,31 @@ public class WayBillController {
     }
 
     /**
+     * 修改运次信息
+     *
+     * @param attr
+     * @param coyId
+     * @param stId
+     * @param wbId
+     * @param type
+     * @param transLine
+     * @param status
+     * @return
+     */
+    @PostMapping("/setTran")
+    public String setTran(RedirectAttributes attr,
+                          @RequestParam(name = "coyId") Integer coyId,
+                          @RequestParam(name = "stId") Integer stId,
+                          @RequestParam(name = "wbId") Integer wbId,
+                          @RequestParam(name = "type") Integer type,
+                          @RequestParam(name = "transLine") String transLine,
+                          @RequestParam(name = "status") Integer status) {
+        wbService.setTran(stId, coyId, type, transLine, status);
+        attr.addAttribute("id", wbId);
+        return "redirect:/wb/one";
+    }
+
+    /**
      * 添加报关信息
      *
      * @param attr
@@ -205,6 +230,33 @@ public class WayBillController {
     }
 
     /**
+     * 修改报关信息
+     *
+     * @param attr
+     * @param wbId
+     * @param ctdId
+     * @param cgtxId
+     * @param address
+     * @param price
+     * @param startTime
+     * @param finishTime
+     * @return
+     */
+    @PostMapping("/setCtd")
+    public String setCtd(RedirectAttributes attr,
+                         @RequestParam(name = "wbId") Integer wbId,
+                         @RequestParam(name = "ctdId") Integer ctdId,
+                         @RequestParam(name = "cgtxId") Integer cgtxId,
+                         @RequestParam(name = "address") String address,
+                         @RequestParam(name = "price") String price,
+                         @RequestParam(name = "startTime") String startTime,
+                         @RequestParam(name = "finishTime") String finishTime) {
+        wbService.setCtd(ctdId, cgtxId, address, price, startTime, finishTime);
+        attr.addAttribute("id", wbId);
+        return "redirect:/wb/one";
+    }
+
+    /**
      * 添加到港信息
      *
      * @param attr
@@ -232,6 +284,33 @@ public class WayBillController {
         arr.setArpPerPrice(new BigDecimal(perPrice));
         arr.setArpMulPrice(new BigDecimal(mulPrice));
         wbService.addArr(arr);
+        attr.addAttribute("id", wbId);
+        return "redirect:/wb/one";
+    }
+
+    /**
+     * 修改到港信息
+     *
+     * @param attr
+     * @param wbId
+     * @param arpId
+     * @param name
+     * @param inTime
+     * @param outTime
+     * @param perPrice
+     * @param mulPrice
+     * @return
+     */
+    @PostMapping("/setArr")
+    public String setArr(RedirectAttributes attr,
+                         @RequestParam(name = "wbId") Integer wbId,
+                         @RequestParam(name = "arpId") Integer arpId,
+                         @RequestParam(name = "name") String name,
+                         @RequestParam(name = "inTime") String inTime,
+                         @RequestParam(name = "outTime") String outTime,
+                         @RequestParam(name = "perPrice") String perPrice,
+                         @RequestParam(name = "mulPrice") String mulPrice) {
+        wbService.setArr(arpId, name, inTime, outTime, perPrice, mulPrice);
         attr.addAttribute("id", wbId);
         return "redirect:/wb/one";
     }
