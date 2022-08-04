@@ -27,7 +27,7 @@ public class CargoTaxDictionaryServiceImpl implements ICargoTaxDictionaryService
 
     @Override
     public List<CargoTaxDictionary> allDic() {
-        return cargoTaxDicMapper.selectList(null);
+        return cargoTaxDicMapper.selectList(new QueryWrapper<CargoTaxDictionary>().eq("ctd_status", 1));
     }
 
     @Override
@@ -36,14 +36,16 @@ public class CargoTaxDictionaryServiceImpl implements ICargoTaxDictionaryService
         switch (op) {
             case 0:
                 ctd.setCtdStatus(2);
-                cargoTaxDicMapper.updateById(ctd);
                 break;
             case 1:
                 ctd.setCtdTax(new BigDecimal(info));
                 break;
+            case 2:
+                ctd.setCtdName(info);
             default:
                 break;
         }
+        cargoTaxDicMapper.updateById(ctd);
     }
 
     @Override

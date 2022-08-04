@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2022-08-02
  */
 @Controller
-@RequestMapping("/cargoTaxDic")
+@RequestMapping("/ctd")
 public class CargoTaxDictionaryController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class CargoTaxDictionaryController {
     public String allDic(ModelMap map) {
         List<CargoTaxDictionary> dicList = cargoTaxDictionaryService.allDic();
         map.put("dicList", dicList);
-        return "cargoTaxDic";
+        return "back/cargoTaxDic";
     }
 
     /**
@@ -40,7 +40,7 @@ public class CargoTaxDictionaryController {
      *
      * @param map
      * @param id   id
-     * @param op   操作码 0-删除  1-修改货品税额单价
+     * @param op   操作码 0-删除  1-修改货品税额单价  2-修改货物名称
      * @param info 对应 op 的信息
      * @return
      */
@@ -50,7 +50,7 @@ public class CargoTaxDictionaryController {
                           @RequestParam(name = "op") Integer op,
                           @RequestParam(name = "info") String info) {
         cargoTaxDictionaryService.setInfo(id, op, info);
-        return "redirect:/cargoTaxDic/allDic";
+        return "redirect:/ctd/allDic";
     }
 
     @PostMapping("/add")
@@ -64,7 +64,7 @@ public class CargoTaxDictionaryController {
         ctd.setCtdTax(new BigDecimal(tax));
         ctd.setCtdStatus(1);
         cargoTaxDictionaryService.add(ctd);
-        return "redirect:/cargoTaxDic/allDic";
+        return "redirect:/ctd/allDic";
     }
 
 }

@@ -20,7 +20,64 @@
 </head>
 
 <body>
+<!--*******************
+    Preloader start
+********************-->
+<div id="preloader">
+    <div class="waviy">
+        <span style="--i:1">加</span>
+        <span style="--i:2">载</span>
+        <span style="--i:3">中</span>
+        <span style="--i:4">.</span>
+        <span style="--i:5">.</span>
+        <span style="--i:6">.</span>
+    </div>
+</div>
+<!--*******************
+    Preloader end
+********************-->
 
+<!--**********************************
+        Nav header start
+    ***********************************-->
+<div class="nav-header">
+    <a class="brand-logo" th:href="@{/backIndex}">
+        <img alt="logo" class="img-thumbnail " style="width: 70%; height: auto" id="logo-4"
+             src="/assets/image/logo-4.png}">
+    </a>
+    <div class="nav-control">
+        <div class="hamburger">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Nav header end
+***********************************-->
+
+<!--**********************************
+        Header start
+    ***********************************-->
+<div class="header">
+    <div class="header-content">
+        <nav class="navbar navbar-expand">
+            <div class=" navbar-nav header-right alert alert-primary alert-dismissible fade show"
+                 style="height:60%; margin-top: 5mm">
+                <svg class="me-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" x2="9.01" y1="9" y2="9"></line>
+                    <line x1="15" x2="15.01" y1="9" y2="9"></line>
+                </svg>
+                <strong>欢迎使用 xx 公司后台管理</strong>
+            </div>
+        </nav>
+    </div>
+</div>
+<!--**********************************
+    Header end ti-comment-alt
+***********************************-->
 
 <!--**********************************
     Main wrapper start
@@ -28,144 +85,37 @@
 <div id="main-wrapper">
 
     <!--**********************************
-    Nav header start
-***********************************-->
-    <div class="nav-header">
-        <a class="brand-logo" th:href="@{/backIndex}">
-            <img alt="logo" class="img-thumbnail" style="width: 70%; height: auto" th:src="@{/image/logo-4.png}">
-        </a>
-        <div class="nav-control">
-            <div class="hamburger">
-                <span class="line"></span><span class="line"></span><span class="line"></span>
-            </div>
-        </div>
-    </div>
-    <!--**********************************
-        Nav header end
-    ***********************************-->
-
-    <!--**********************************
-            Header start
-        ***********************************-->
-    <div class="header">
-        <div class="header-content">
-            <nav class="navbar navbar-expand">
-                <div class=" navbar-nav header-right alert alert-primary alert-dismissible fade show"
-                     style="height:60%; margin-top: 5mm">
-                    <svg class="me-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                        <line x1="9" x2="9.01" y1="9" y2="9"></line>
-                        <line x1="15" x2="15.01" y1="9" y2="9"></line>
-                    </svg>
-                    <strong>欢迎使用 xx 公司后台管理</strong>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!--**********************************
-        Header end ti-comment-alt
-    ***********************************-->
-
-    <!--**********************************
         Sidebar start
     ***********************************-->
     <div class="deznav">
         <div class="deznav-scroll">
             <ul class="metismenu" id="menu">
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-013-checkmark"></i>
-                    <span class="nav-text">用户管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/user/allMan}">后台人员</a></li>
-                        <li><a th:href="@{/user/allCus}">客户</a></li>
-                    </ul>
-
-                </li>
-                <!--                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">-->
-                <!--                    <i class="flaticon-025-dashboard"></i>-->
-                <!--                    <span class="nav-text">运单管理</span>-->
-                <!--                </a>-->
-                <!--                    <ul aria-expanded="false">-->
-                <!--                        <li><a th:href="@{/addOrder}">添加运单</a></li>-->
-                <!--                        <li><a th:href="@{/allOrder}">运单列表</a></li>-->
-                <!--                    </ul>-->
-                <!--                </li>-->
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">运输工具管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/coy/allCoy}">运输工具列表页</a></li>
-                        <li><a th:href="@{/coy/oneCoy}">运输工具详情页</a></li>
-                    </ul>
-                </li>
-
-                </li>
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">运单管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/addOrder}">添加运单</a></li>
-                        <li><a th:href="@{/allOrder}">运单列表</a></li>
-                    </ul>
-                </li>
-                <!--留出来富余   后面再看-->
-                <!--<li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">日程管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/addSche}">批量添加日程</a></li>
-                        <li><a th:href="@{/man/viewSche}">查看日程</a></li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">教室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/classScheRoom}">按教室管理日程</a></li>
-                                <li><a th:href="@{/man/classScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">会议室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/meetScheRoom}">按会议室管理日程</a></li>
-                                <li><a th:href="@{/man/meetScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">实验室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/labScheRoom}">按实验室管理日程</a></li>
-                                <li><a th:href="@{/man/labScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-043-menu"></i>
-                    <span class="nav-text">用户管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/allManager}">管理员一览</a></li>
-                        <li><a th:href="@{/man/userSet}">用户管理</a></li>
-                        <li><a th:href="@{/man/addUser}">新增用户</a></li>
-
-                    </ul>
-                </li>
-
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/user/allMan}">
+                        <i class="flaticon-013-checkmark"></i>
+                        <span class="nav-text">后台人员</span>
+                    </a></li>
                 <li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">个人资料</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/user/profile}">个人信息</a></li>
-                    </ul>
-                </li>-->
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/user/allCus}">
+                        <i class="flaticon-086-star"></i>
+                        <span class="nav-text">客户人员</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/coy/allCoy}">
+                        <i class="flaticon-025-dashboard"></i>
+                        <span class="nav-text">运输工具</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/ctd/allDic}">
+                        <i class="flaticon-043-menu"></i>
+                        <span class="nav-text">货物税额</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/wb/all}">
+                        <i class="flaticon-013-checkmark"></i>
+                        <span class="nav-text">运单信息</span>
+                    </a></li>
             </ul>
-
         </div>
     </div>
     <!--**********************************
@@ -910,5 +860,6 @@
 <script th:src="@{/js/deznav-init.js}"></script>
 <script th:src="@{/js/demo.js}"></script>
 <script th:src="@{/js/styleSwitcher.js}"></script>
+<script src="../assets/js/test.js"></script>
 </body>
 </html>

@@ -248,6 +248,17 @@ public class WayBillServiceImpl implements IWayBillService {
     }
 
     @Override
+    public WayBillDetailPage userSearchWayBill(String phone, String wbNum) {
+        WayBill wb = wbMapper.selectOne(new QueryWrapper<WayBill>()
+                .eq("wb_send_phone", phone)
+                .eq("wb_num", wbNum));
+        if (wb == null) {
+            return null;
+        }
+        return detail(wb.getWbId());
+    }
+
+    @Override
     public void addTran(SignalTrans signalTrans) {
         log.info("添加了一个运次  " + signalTrans.toString());
         signalTransMapper.insert(signalTrans);

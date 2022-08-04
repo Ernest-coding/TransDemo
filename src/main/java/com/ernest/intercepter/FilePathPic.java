@@ -10,7 +10,7 @@ public class FilePathPic extends WebMvcConfigurerAdapter {
 
     private final String ezioPcPath = "D:\\Learning_File\\Code_Program\\java\\TransDemo\\files\\";
     private final String ernestPcPath = "D:\\code_of_JAVA_2021-7\\duan\\TransDemo\\files\\";
-    private final String windowsPath = "file:///" + ezioPcPath;
+    private final String windowsPath = "file:///" + ernestPcPath;
     private final String linuxPath = "/usr/local/duan/files/";
 
     @Override

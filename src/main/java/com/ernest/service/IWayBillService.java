@@ -43,4 +43,6 @@ public interface IWayBillService {
     void setCtd(Integer ctdId, Integer cgtxId, String address, String price, String startTime, String finishTime);
 
     void setArr(Integer arpId, String name, String inTime, String outTime, String perPrice, String mulPrice);
+
+    WayBillDetailPage userSearchWayBill(String phone, String wbNum);
 }

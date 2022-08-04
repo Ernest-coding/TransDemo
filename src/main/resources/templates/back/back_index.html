@@ -22,12 +22,31 @@
 </head>
 <body>
 
+<!--*******************
+    Preloader start
+********************-->
+<div id="preloader">
+    <div class="waviy">
+        <span style="--i:1">加</span>
+        <span style="--i:2">载</span>
+        <span style="--i:3">中</span>
+        <span style="--i:4">.</span>
+        <span style="--i:5">.</span>
+        <span style="--i:6">.</span>
+    </div>
+</div>
+<!--*******************
+    Preloader end
+********************-->
+
+
 <!--**********************************
         Nav header start
     ***********************************-->
 <div class="nav-header">
     <a class="brand-logo" th:href="@{/backIndex}">
-        <img alt="logo" class="img-thumbnail " style="width: 70%; height: auto" id="logo-4" src="/assets/image/logo-4.png}">
+        <img alt="logo" class="img-thumbnail " style="width: 70%; height: auto" id="logo-4"
+             src="/assets/image/logo-4.png}">
     </a>
     <div class="nav-control">
         <div class="hamburger">
@@ -74,97 +93,32 @@
     <div class="deznav">
         <div class="deznav-scroll">
             <ul class="metismenu" id="menu">
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-013-checkmark"></i>
-                    <span class="nav-text">用户管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/user/allMan}">后台人员</a></li>
-                        <li><a th:href="@{/user/allCus}">客户</a></li>
-                    </ul>
-
-                </li>
-<!--                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">-->
-<!--                    <i class="flaticon-025-dashboard"></i>-->
-<!--                    <span class="nav-text">运单管理</span>-->
-<!--                </a>-->
-<!--                    <ul aria-expanded="false">-->
-<!--                        <li><a th:href="@{/addOrder}">添加运单</a></li>-->
-<!--                        <li><a th:href="@{/allOrder}">运单列表</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">运输工具管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/coy/allCoy}">运输工具列表页</a></li>
-                    </ul>
-                </li>
-
-                </li>
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">运单管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <!--<li><a th:href="@{/addOrder}">添加运单</a></li>-->
-                        <li><a th:href="@{/wb/all}">运单列表</a></li>
-                    </ul>
-                </li>
-                <!--留出来富余   后面再看-->
-                <!--<li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">日程管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/addSche}">批量添加日程</a></li>
-                        <li><a th:href="@{/man/viewSche}">查看日程</a></li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">教室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/classScheRoom}">按教室管理日程</a></li>
-                                <li><a th:href="@{/man/classScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">会议室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/meetScheRoom}">按会议室管理日程</a></li>
-                                <li><a th:href="@{/man/meetScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">实验室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/labScheRoom}">按实验室管理日程</a></li>
-                                <li><a th:href="@{/man/labScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-043-menu"></i>
-                    <span class="nav-text">用户管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/allManager}">管理员一览</a></li>
-                        <li><a th:href="@{/man/userSet}">用户管理</a></li>
-                        <li><a th:href="@{/man/addUser}">新增用户</a></li>
-
-                    </ul>
-                </li>
-
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/user/allMan}">
+                        <i class="flaticon-013-checkmark"></i>
+                        <span class="nav-text">后台人员</span>
+                    </a></li>
                 <li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">个人资料</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/user/profile}">个人信息</a></li>
-                    </ul>
-                </li>-->
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/user/allCus}">
+                        <i class="flaticon-086-star"></i>
+                        <span class="nav-text">客户人员</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/coy/allCoy}">
+                        <i class="flaticon-025-dashboard"></i>
+                        <span class="nav-text">运输工具</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/ctd/allDic}">
+                        <i class="flaticon-043-menu"></i>
+                        <span class="nav-text">货物税额</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/wb/all}">
+                        <i class="flaticon-013-checkmark"></i>
+                        <span class="nav-text">运单信息</span>
+                    </a></li>
             </ul>
-
         </div>
     </div>
     <!--**********************************

@@ -11,7 +11,7 @@
     <meta content="后台人员管理" name="description">
 
     <!-- PAGE TITLE HERE -->
-    <title>后台人员管理</title>
+    <title>货物税额字典</title>
 
     <!-- Datatable -->
     <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
@@ -137,7 +137,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">后台人员列表</h4>
+                            <h4 class="card-title">货物税额信息列表</h4>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModalpopover">
@@ -149,37 +149,28 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">添加用户</h5>
+                                            <h5 class="modal-title">添加货物税额信息</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal">
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" th:action="@{/user/addMan}">
+                                            <form method="post" th:action="@{/ctd/add}">
                                                 <div class="mb-3">
-                                                    <label class="mb-1"><strong>账号</strong></label>
-                                                    <input class="form-control" name="act" placeholder="请输入账号"
+                                                    <label class="mb-1"><strong>货物名</strong></label>
+                                                    <input class="form-control" name="name" placeholder="货物名"
                                                            type="text">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="mb-1"><strong>密码</strong></label>
-                                                    <input class="form-control" name="pwd"
-                                                           placeholder="请输入密码" type="text">
+                                                    <label class="mb-1"><strong>货物税额</strong></label>
+                                                    <input class="form-control" name="tax"
+                                                           placeholder="货物税额" type="text">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="mb-1"><strong>姓名</strong></label>
-                                                    <input class="form-control" name="name"
-                                                           placeholder="请输入姓名" type="text">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="mb-1"><strong>手机号</strong></label>
-                                                    <input class="form-control" name="phone"
-                                                           placeholder="请输入手机号" type="text">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="mb-1"><strong>身份</strong></label>
+                                                    <label class="mb-1"><strong>货物类型</strong></label>
                                                     <select name="type" class="form-control wide mb-3">
-                                                        <option selected="selected" value="1">管理员</option>
-                                                        <option value="2">客户</option>
+                                                        <option selected="selected" value="普通物品">普通物品</option>
+                                                        <option value="敏感品">敏感品</option>
+                                                        <option value="危险品">危险品</option>
                                                     </select>
                                                 </div>
                                                 <div class="modal-footer">
@@ -204,30 +195,24 @@
                                     <thead>
                                     <tr>
                                         <th class="align-middle text-center">序号</th>
-                                        <th class="align-middle text-center">姓名</th>
-                                        <th class="align-middle text-center">联系方式</th>
-                                        <th class="align-middle text-center">身份</th>
-                                        <th class="align-middle text-center">更新时间</th>
+                                        <th class="align-middle text-center">货物名称</th>
+                                        <th class="align-middle text-center">货物类型</th>
+                                        <th class="align-middle text-center">税额</th>
                                         <th class="no-sort text-center">操作</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                    <tr th:each="info : ${userList}">
+                                    <tr th:each="info : ${dicList}">
                                         <td class="py-2 text-center" th:text="${infoStat.count}">#</td>
                                         <td class="py-2 text-center">
-                                            <input class="form-control" th:id="'name' + ${info.manId}" placeholder=""
-                                                   th:value="${info.manName}" type="text">
-                                        </td>
+                                            <input class="form-control" th:id="'name' + ${info.ctdId}" placeholder=""
+                                                   th:value="${info.ctdName}" type="text"></td>
+                                        <td class="py-2 text-center" th:text="${info.ctdType}"></td>
                                         <td class="py-2 text-center">
-                                            <input class="form-control" th:id="'phone' + ${info.manId}" placeholder=""
-                                                   th:value="${info.manPhone}" type="text">
-                                        </td>
-                                        <td class="py-2 text-center"
-                                            th:text="(${info.manType} == 1) ? '管理员' : '操作员'">
-                                            <span class="badge light badge-outline-primary">#</span>
-                                        </td>
-                                        <td class="py-2 text-center" th:text="${info.updTime}">#</td>
+                                            <input class="form-control" th:id="'tax' + ${info.ctdId}" placeholder=""
+                                                   th:value="${info.ctdTax}" type="text"></td>
+
                                         <!--<td class=py-2 text-center><span class="badge light badge-danger">否</span></td>-->
                                         <td class="py-2 text-center">
                                             <div class="dropdown text-sans-serif">
@@ -256,12 +241,13 @@
                                                      class="dropdown-menu dropdown-menu-end border py-0">
                                                     <div class="py-2">
                                                         <a class="dropdown-item" href=""
-                                                           th:onclick="'subSetName(1, ' + ${info.manId} + ', $(\'\#name'+ ${info.manId} +'\').val());'">修改姓名</a>
+                                                           th:onclick="'setCtdInfo(2, ' + ${info.ctdId} + ', $(\'\#name'+ ${info.ctdId} +'\').val());'">修改名称</a>
+                                                        <!--                                                           th:onclick="'setCtdInfo(2, ' + ${info.ctdId} + ', $(\'\#name'+ ${info.ctdId} +'\').val());'">修改名称</a>-->
                                                         <a class="dropdown-item" href=""
-                                                           th:onclick="'subSetPhone(1, ' + ${info.manId} + ', $(\'\#phone'+ ${info.manId} +'\').val());'">修改手机号</a>
+                                                           th:onclick="'setCtdInfo(1, ' + ${info.ctdId} + ', $(\'\#tax'+ ${info.ctdId} +'\').val());'">修改税额</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item text-danger"
-                                                           th:href="@{'/user/setInfo?type=1&info=null&op=0&id=' + ${info.manId}}">删除</a>
+                                                           th:href="@{'/ctd/setInfo?info=null&op=0&id=' + ${info.ctdId}}">删除</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,9 +260,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
     <!--**********************************

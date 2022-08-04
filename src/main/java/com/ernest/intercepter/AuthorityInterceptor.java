@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthorityInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String uType = (String) request.getSession().getAttribute("uType");
+        Object id = request.getSession().getAttribute("id");
         String url = request.getRequestURI();
-        if (url.contains(uType)) {
+        if (url.contains((CharSequence) id)) {
             return true;
         } else {
             response.sendRedirect(request.getContextPath() + "/login");

@@ -18,7 +18,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         Object uAccount = request.getSession().getAttribute("act");
         if (uAccount == null) {
             request.setAttribute("msg", "没有权限，请先登录");
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(request.getContextPath() + "/manage");
 
             return false;
         } else {

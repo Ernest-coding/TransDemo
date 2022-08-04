@@ -27,51 +27,69 @@
 
 <body>
 
+<!--*******************
+    Preloader start
+********************-->
+<div id="preloader">
+    <div class="waviy">
+        <span style="--i:1">加</span>
+        <span style="--i:2">载</span>
+        <span style="--i:3">中</span>
+        <span style="--i:4">.</span>
+        <span style="--i:5">.</span>
+        <span style="--i:6">.</span>
+    </div>
+</div>
+<!--*******************
+    Preloader end
+********************-->
+
+<!--**********************************
+        Nav header start
+    ***********************************-->
+<div class="nav-header">
+    <a class="brand-logo" th:href="@{/backIndex}">
+        <img alt="logo" class="img-thumbnail " style="width: 70%; height: auto" id="logo-4"
+             src="/assets/image/logo-4.png}">
+    </a>
+    <div class="nav-control">
+        <div class="hamburger">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Nav header end
+***********************************-->
+
+<!--**********************************
+        Header start
+    ***********************************-->
+<div class="header">
+    <div class="header-content">
+        <nav class="navbar navbar-expand">
+            <div class=" navbar-nav header-right alert alert-primary alert-dismissible fade show"
+                 style="height:60%; margin-top: 5mm">
+                <svg class="me-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" x2="9.01" y1="9" y2="9"></line>
+                    <line x1="15" x2="15.01" y1="9" y2="9"></line>
+                </svg>
+                <strong>欢迎使用 xx 公司后台管理</strong>
+            </div>
+        </nav>
+    </div>
+</div>
+<!--**********************************
+    Header end ti-comment-alt
+***********************************-->
+
 <!--**********************************
     Main wrapper start
 ***********************************-->
 <div id="main-wrapper">
-
-    <!--**********************************
-        Nav header start
-    ***********************************-->
-    <div class="nav-header">
-        <a class="brand-logo" th:href="@{/backIndex}">
-            <img alt="logo" class="img-thumbnail logoImg" style="width: 70%; height: auto" id="logo-4" src="assets/image/logo-4.png">
-        </a>
-        <div class="nav-control">
-            <div class="hamburger">
-                <span class="line"></span><span class="line"></span><span class="line"></span>
-            </div>
-        </div>
-    </div>
-    <!--**********************************
-        Nav header end
-    ***********************************-->
-
-    <!--**********************************
-            Header start
-        ***********************************-->
-    <div class="header">
-        <div class="header-content">
-            <nav class="navbar navbar-expand">
-                <div class=" navbar-nav header-right alert alert-primary alert-dismissible fade show"
-                     style="height:60%; margin-top: 5mm">
-                    <svg class="me-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                        <line x1="9" x2="9.01" y1="9" y2="9"></line>
-                        <line x1="15" x2="15.01" y1="9" y2="9"></line>
-                    </svg>
-                    <strong>欢迎使用 xx 公司后台管理</strong>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!--**********************************
-        Header end ti-comment-alt
-    ***********************************-->
 
     <!--**********************************
         Sidebar start
@@ -79,98 +97,32 @@
     <div class="deznav">
         <div class="deznav-scroll">
             <ul class="metismenu" id="menu">
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-013-checkmark"></i>
-                    <span class="nav-text">用户管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/user/allMan}">后台人员</a></li>
-                        <li><a th:href="@{/user/allCus}">客户</a></li>
-                    </ul>
-
-                </li>
-                <!--                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">-->
-                <!--                    <i class="flaticon-025-dashboard"></i>-->
-                <!--                    <span class="nav-text">运单管理</span>-->
-                <!--                </a>-->
-                <!--                    <ul aria-expanded="false">-->
-                <!--                        <li><a th:href="@{/addOrder}">添加运单</a></li>-->
-                <!--                        <li><a th:href="@{/allOrder}">运单列表</a></li>-->
-                <!--                    </ul>-->
-                <!--                </li>-->
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">运输工具管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/coy/allCoy}">运输工具列表页</a></li>
-                        <li><a th:href="@{/coy/oneCoy}">运输工具详情页</a></li>
-                    </ul>
-                </li>
-
-                </li>
-                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-025-dashboard"></i>
-                    <span class="nav-text">运单管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/addOrder}">添加运单</a></li>
-                        <li><a th:href="@{/allOrder}">运单列表</a></li>
-                    </ul>
-                </li>
-                <!--留出来富余   后面再看-->
-                <!--<li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">日程管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/addSche}">批量添加日程</a></li>
-                        <li><a th:href="@{/man/viewSche}">查看日程</a></li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">教室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/classScheRoom}">按教室管理日程</a></li>
-                                <li><a th:href="@{/man/classScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">会议室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/meetScheRoom}">按会议室管理日程</a></li>
-                                <li><a th:href="@{/man/meetScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">实验室日程管理</a>
-                            <ul aria-expanded="false">
-                                <li><a th:href="@{/man/labScheRoom}">按实验室管理日程</a></li>
-                                <li><a th:href="@{/man/labScheTime}">按时间管理日程</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-043-menu"></i>
-                    <span class="nav-text">用户管理</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/allManager}">管理员一览</a></li>
-                        <li><a th:href="@{/man/userSet}">用户管理</a></li>
-                        <li><a th:href="@{/man/addUser}">新增用户</a></li>
-
-                    </ul>
-                </li>
-
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/user/allMan}">
+                        <i class="flaticon-013-checkmark"></i>
+                        <span class="nav-text">后台人员</span>
+                    </a></li>
                 <li>
-                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
-                    <i class="flaticon-086-star"></i>
-                    <span class="nav-text">个人资料</span>
-                </a>
-                    <ul aria-expanded="false">
-                        <li><a th:href="@{/man/user/profile}">个人信息</a></li>
-                    </ul>
-                </li>-->
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/user/allCus}">
+                        <i class="flaticon-086-star"></i>
+                        <span class="nav-text">客户人员</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/coy/allCoy}">
+                        <i class="flaticon-025-dashboard"></i>
+                        <span class="nav-text">运输工具</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/ctd/allDic}">
+                        <i class="flaticon-043-menu"></i>
+                        <span class="nav-text">货物税额</span>
+                    </a></li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{/wb/all}">
+                        <i class="flaticon-013-checkmark"></i>
+                        <span class="nav-text">运单信息</span>
+                    </a></li>
             </ul>
-
         </div>
     </div>
     <!--**********************************
@@ -212,7 +164,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="mb-1"><strong>车牌号</strong></label>
-                                                    <input class="form-control" name="license" placeholder="请输入车牌号"
+                                                    <input class="form-control" name="license"
+                                                           placeholder="请输入车牌号"
                                                            type="text">
                                                 </div>
                                                 <div class="mb-3">
@@ -268,8 +221,8 @@
                                         <th class="align-middle text-center">名称</th>
                                         <th class="align-middle text-center">所属地</th>
                                         <th class="align-middle text-center">牌照号</th>
-<!--                                        <th class="align-middle text-center">负责人姓名</th>-->
-<!--                                        <th class="align-middle text-center">负责人联系方式</th>-->
+                                        <!--                                        <th class="align-middle text-center">负责人姓名</th>-->
+                                        <!--                                        <th class="align-middle text-center">负责人联系方式</th>-->
                                         <th class="align-middle text-center">运输类型</th>
                                         <th class="align-middle text-center">更新时间</th>
                                         <th class="align-middle text-center">查看运次</th>
@@ -289,24 +242,27 @@
                                                    th:value="${info.coySourceAddress}" type="text">
                                         </td>
                                         <td class="py-2 text-center">
-                                            <input class="form-control" th:id="'coyLicense' + ${info.coyId}" placeholder=""
+                                            <input class="form-control" th:id="'coyLicense' + ${info.coyId}"
+                                                   placeholder=""
                                                    th:value="${info.coyLicense}" type="text">
                                         </td>
-<!--                                        <td class="py-2 text-center">-->
-<!--                                            <input class="form-control" th:id="'userName' + ${info.coyId}" placeholder=""-->
-<!--                                                   th:value="${info.coyPrincipalName}" type="text">-->
-<!--                                        </td>-->
-<!--                                        <td class="py-2 text-center">-->
-<!--                                            <input class="form-control" th:id="'userPhone' + ${info.coyId}" placeholder=""-->
-<!--                                                   th:value="${info.coyPrincipalPhone}" type="text">-->
-<!--                                        </td>-->
+                                        <!--                                        <td class="py-2 text-center">-->
+                                        <!--                                            <input class="form-control" th:id="'userName' + ${info.coyId}" placeholder=""-->
+                                        <!--                                                   th:value="${info.coyPrincipalName}" type="text">-->
+                                        <!--                                        </td>-->
+                                        <!--                                        <td class="py-2 text-center">-->
+                                        <!--                                            <input class="form-control" th:id="'userPhone' + ${info.coyId}" placeholder=""-->
+                                        <!--                                                   th:value="${info.coyPrincipalPhone}" type="text">-->
+                                        <!--                                        </td>-->
                                         <td class="py-2 text-center">
-                                            <span th:class="${info.coyTypeStrTheme}" th:text="${info.coyTypeStr}">#</span>
+                                            <span th:class="${info.coyTypeStrTheme}"
+                                                  th:text="${info.coyTypeStr}">#</span>
                                         </td>
                                         <td class="py-2 text-center" th:text="${info.updTime}">#</td>
-                                        <td class="py-2 text-center" >
-                                            <a th:href="@{/coy/oneCoy(id=${info.coyId})}" >
-                                                <button class="badge badge-primary">查看</button></a>
+                                        <td class="py-2 text-center">
+                                            <a th:href="@{/coy/oneCoy(id=${info.coyId})}">
+                                                <button class="badge badge-primary">查看</button>
+                                            </a>
                                         </td>
                                         <!--<td class=py-2 text-center><span class="badge light badge-danger">否</span></td>-->
                                         <td class="py-2 text-center">
@@ -349,101 +305,13 @@
                                             </div>
                                         </td>
                                     </tr>
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <!--备份   后台用-->
-            <!--<div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">用户列表</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="display" id="example4" style="min-width: 845px">
-                                    <thead>
-                                    <tr>
-                                        <th class="align-middle text-center">序号</th>
-                                        <th class="align-middle text-center">学工号</th>
-                                        <th class="align-middle text-center">姓名</th>
-                                        <th class="align-middle text-center">手机</th>
-                                        <th class="align-middle text-center">身份</th>
-                                        <th class="align-middle text-center">是否可用</th>
-                                        <th class="align-middle text-center">违规次数</th>
-                                        <th class="align-middle text-center">学院</th>
-                                        <th class="no-sort text-center">操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="info : ${users}">
-                                        <td class="py-2 text-center" th:text="${infoStat.count}">#</td>
-                                        <td class="py-2 text-center" th:text="${info.userAct}">#</td>
-                                        <td class="py-2 text-center" th:text="${info.userName}">#</td>
-                                        <td class="py-2 text-center" th:text="${info.userPhone}">#</td>
-                                        <td class="py-2 text-center"><span th:class="${info.typeTheme}"
-                                                                           th:text="${info.typeMsg}">#</span></td>
-                                        <td class="py-2 text-center"><span th:class="${info.statusTheme}"
-                                                                           th:text="${info.statusMsg}">#</span></td>
-                                        &lt;!&ndash;                                        <td class=py-2 text-center><span class="badge light badge-success">启用</span></td>&ndash;&gt;
-                                        <td class="py-2 text-center"><span th:class="${info.illeTheme}"
-                                                                           th:text="${info.illeMsg}">#</span></td>
-                                        <td class="py-2 text-center" th:text="${info.depaName}">#</td>
-                                        <td class=py-2 text-center>
-                                            <div class="dropdown text-sans-serif">
-                                                <button aria-expanded="false" aria-haspopup="true"
-                                                        class="btn btn-primary tp-btn-light sharp"
-                                                        data-boundary="viewport"
-                                                        data-bs-toggle="dropdown" type="button">
-															<span>
-																<svg height="18px"
-                                                                     version="1.1" viewbox="0 0 24 24" width="18px"
-                                                                     xmlns="http://www.w3.org/2000/svg">
-																<g fill="none" fill-rule="evenodd" stroke="none"
-                                                                   stroke-width="1">
-																	<rect height="24" width="24" x="0" y="0"></rect>
-																	<circle cx="5" cy="12" fill="#000000"
-                                                                            r="2"></circle>
-																	<circle cx="12" cy="12" fill="#000000"
-                                                                            r="2"></circle>
-																	<circle cx="19" cy="12" fill="#000000"
-                                                                            r="2"></circle>
-																</g>
-															</svg>
-															</span>
-                                                </button>
-                                                <div aria-labelledby="order-dropdown-0"
-                                                     class="dropdown-menu dropdown-menu-end border py-0">
-                                                    <div class="py-2">
-                                                        <a class="dropdown-item"
-                                                           th:href="@{'/man/user/userOp?idNum=' + ${info.userId} +'&op=2'}">禁用</a>
-                                                        <a class="dropdown-item"
-                                                           th:href="@{'/man/user/userOp?idNum=' + ${info.userId} +'&op=1'}">启用</a>
-                                                        <a class="dropdown-item"
-                                                           th:href="@{'/man/user/userOp?idNum=' + ${info.userId} +'&op=3'}">清除违规</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger"
-                                                           th:href="@{'/man/user/userOp?idNum=' + ${info.userId} +'&op=5'}">删除</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>-->
         </div>
     </div>
     <!--**********************************

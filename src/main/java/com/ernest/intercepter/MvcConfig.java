@@ -16,23 +16,22 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 注册 LoginHandlerInterceptor 拦截器
-        /*InterceptorRegistration loginInter = registry.addInterceptor(new LoginHandlerInterceptor());
+        InterceptorRegistration loginInter = registry.addInterceptor(new LoginHandlerInterceptor());
         // 拦截所有路径
-        loginInter.addPathPatterns("/user/**", "/coy/**", "/");
+        loginInter.addPathPatterns("/user/**", "/coy/**", "/wb/**", "/ctd/**");
         loginInter.excludePathPatterns(
-                "/files/**",
-                "*.js", "*.css", "*.jpg", "*.png", "*.gif", "*.woff*"
+                "/files/**", "/Path/**",
+                "*.js", "*.css", "*.jpg", "*.jpeg", "*.png", "*.gif", "*.woff*"
         );   // 添加不拦截路径
 
-        // 注册 AuthorityIntercept 拦截器
+        /*// 注册 AuthorityIntercept 拦截器
         InterceptorRegistration authorityInter = registry.addInterceptor(new AuthorityInterceptor());
         // 拦截所有路径
-        authorityInter.addPathPatterns("/user/**", "/coy/**", "/");
+        authorityInter.addPathPatterns("/user/**", "/coy/**", "/wb/**", "/ctd/**");
         authorityInter.excludePathPatterns(
-                "/files/**",
+                "/files/**", "/Path/**",
                 "*.js", "*.css", "*.jpg", "*.png", "*.gif", "*.woff*"
         );   // 添加不拦截路径*/
-//        authorityInter.addPathPatterns("/user/**", "/man/**", "/sign/**");
 
 
         WebMvcConfigurer.super.addInterceptors(registry);

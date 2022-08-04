@@ -25,3 +25,15 @@ function subSetPhone(type, id, phone) {
         }
     });
 }
+
+function setCtdInfo(op, id, info) {
+    $.ajax({
+        url: "/ctd/setInfo?op=" + op + "&id=" + id + "&info=" + info,
+        type: "GET",
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            // window.location.href = "http://" + window.location.host + "/user/allMan";
+        }
+    });
+}

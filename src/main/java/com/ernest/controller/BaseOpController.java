@@ -27,7 +27,7 @@ public class BaseOpController {
     @Autowired
     private IBaseOpService baseOpService;
 
-    @GetMapping("man")
+    @GetMapping("manage")
     public String toLogin() {
         return "back/login";
     }
@@ -77,7 +77,8 @@ public class BaseOpController {
     @GetMapping("backIndex")
     public String toBackIndex(ModelMap map) {
 
-        return "back/back_index";
+        return "redirect:/wb/all";
+//        return "back/back_index";
     }
 
     /**
