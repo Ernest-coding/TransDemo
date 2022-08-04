@@ -141,6 +141,7 @@ public class ConveyanceServiceImpl implements IConveyanceService {
         result.setCoyInfo(item.getCoyInfo());
         result.setAddTime(item.getAddTime());
         result.setUpdTime(item.getUpdTime());
+        result.setCoyName(item.getCoyName());
         return result;
     }
 

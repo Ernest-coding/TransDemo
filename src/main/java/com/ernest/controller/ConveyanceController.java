@@ -71,7 +71,7 @@ public class ConveyanceController {
      * 添加运输工具
      *
      * @param map
-     * @param coyName  运输工具名称
+     * @param name  运输工具名称
      * @param userName  负责人姓名
      * @param userPhone 负责人手机
      * @param type      类型  1-空运  2-海运  3-陆运
@@ -82,7 +82,7 @@ public class ConveyanceController {
      */
     @PostMapping("/add")
     public String add(ModelMap map, HttpSession session,
-                      @RequestParam(name = "coyName") String coyName,
+
                       @RequestParam(name = "userName") String userName,
                       @RequestParam(name = "userPhone") String userPhone,
                       @RequestParam(name = "name") String name,
@@ -96,7 +96,7 @@ public class ConveyanceController {
         }
 
         Conveyance entity = new Conveyance();
-        entity.setCoyPrincipalName(coyName);
+
         entity.setCoyPrincipalName(userName);
         entity.setCoyPrincipalPhone(userPhone);
         entity.setCoyName(name);

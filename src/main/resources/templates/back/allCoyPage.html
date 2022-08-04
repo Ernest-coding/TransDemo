@@ -186,7 +186,7 @@
                                             <form method="post" th:action="@{/coy/add}">
                                                 <div class="mb-3">
                                                     <label class="mb-1"><strong>运输工具名称</strong></label>
-                                                    <input class="form-control" name="coyName"
+                                                    <input class="form-control" name="name"
                                                            placeholder="请输入运输工具名称" type="text">
                                                 </div>
                                                 <div class="mb-3">
@@ -244,9 +244,11 @@
                                     <thead>
                                     <tr>
                                         <th class="align-middle text-center">序号</th>
+                                        <th class="align-middle text-center">名称</th>
+                                        <th class="align-middle text-center">所属地</th>
                                         <th class="align-middle text-center">牌照号</th>
-                                        <th class="align-middle text-center">负责人姓名</th>
-                                        <th class="align-middle text-center">负责人联系方式</th>
+<!--                                        <th class="align-middle text-center">负责人姓名</th>-->
+<!--                                        <th class="align-middle text-center">负责人联系方式</th>-->
                                         <th class="align-middle text-center">运输类型</th>
                                         <th class="align-middle text-center">更新时间</th>
                                         <th class="no-sort text-center">操作</th>
@@ -257,17 +259,25 @@
                                     <tr th:each="info : ${coys}">
                                         <td class="py-2 text-center" th:text="${infoStat.count}">#</td>
                                         <td class="py-2 text-center">
+                                            <input class="form-control" th:id="'name' + ${info.coyId}" placeholder=""
+                                                   th:value="${info.coyName}" type="text">
+                                        </td>
+                                        <td class="py-2 text-center">
+                                            <input class="form-control" th:id="'address' + ${info.coyId}" placeholder=""
+                                                   th:value="${info.coySourceAddress}" type="text">
+                                        </td>
+                                        <td class="py-2 text-center">
                                             <input class="form-control" th:id="'coyLicense' + ${info.coyId}" placeholder=""
                                                    th:value="${info.coyLicense}" type="text">
                                         </td>
-                                        <td class="py-2 text-center">
-                                            <input class="form-control" th:id="'userName' + ${info.coyId}" placeholder=""
-                                                   th:value="${info.coyPrincipalName}" type="text">
-                                        </td>
-                                        <td class="py-2 text-center">
-                                            <input class="form-control" th:id="'userPhone' + ${info.coyId}" placeholder=""
-                                                   th:value="${info.coyPrincipalPhone}" type="text">
-                                        </td>
+<!--                                        <td class="py-2 text-center">-->
+<!--                                            <input class="form-control" th:id="'userName' + ${info.coyId}" placeholder=""-->
+<!--                                                   th:value="${info.coyPrincipalName}" type="text">-->
+<!--                                        </td>-->
+<!--                                        <td class="py-2 text-center">-->
+<!--                                            <input class="form-control" th:id="'userPhone' + ${info.coyId}" placeholder=""-->
+<!--                                                   th:value="${info.coyPrincipalPhone}" type="text">-->
+<!--                                        </td>-->
                                         <td class="py-2 text-center">
                                             <span th:class="${info.coyTypeStrTheme}" th:text="${info.coyTypeStr}">#</span>
                                         </td>
@@ -300,11 +310,11 @@
                                                      class="dropdown-menu dropdown-menu-end border py-0">
                                                     <div class="py-2">
                                                         <a class="dropdown-item" href=""
-                                                           th:onclick="'subSetUserName(1, ' + ${info.coyId} + ', $(\'\#userName'+ ${info.coyId} +'\').val());'">修改姓名</a>
+                                                           th:onclick="'subSetCoyName(1, ' + ${info.coyId} + ', $(\'\#name'+ ${info.coyId} +'\').val());'">修改运输工具名称</a>
                                                         <a class="dropdown-item" href=""
-                                                           th:onclick="'subSetUserName(1, ' + ${info.coyId} + ', $(\'\#userName'+ ${info.coyId} +'\').val());'">修改姓名</a>
+                                                           th:onclick="'subSetLicense(1, ' + ${info.coyId} + ', $(\'\#license'+ ${info.coyId} +'\').val());'">修改牌照信息</a>
                                                         <a class="dropdown-item" href=""
-                                                           th:onclick="'subSetUserPhone(1, ' + ${info.coyId} + ', $(\'\#userPhone'+ ${info.coyId} +'\').val());'">修改手机号</a>
+                                                           th:onclick="'subSetType(1, ' + ${info.coyId} + ', $(\'\#type'+ ${info.coyId} +'\').val());'">修改运输类型</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item text-danger"
                                                            th:href="@{'/coy/setInfo?type=1&info=null&op=0&id=' + ${info.coyId}}">删除</a>
