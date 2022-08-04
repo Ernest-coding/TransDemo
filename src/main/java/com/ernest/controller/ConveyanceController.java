@@ -114,12 +114,13 @@ public class ConveyanceController {
      *
      * @param map
      * @param id   id
-     * @param op   操作码 0-删除
+     * @param op   操作码 0-删除  1-名称 2-牌照 3-类型
      * @param info 操作码对应的信息
      * @return
      */
     @GetMapping("/setInfo")
     public String setInfo(ModelMap map, HttpSession session,
+
                           @RequestParam(name = "id") Integer id,
                           @RequestParam(name = "op") Integer op,
                           @RequestParam(name = "info") String info) {

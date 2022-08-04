@@ -75,7 +75,7 @@
 
     <!--**********************************
         Sidebar start
-        ***********************************-->
+    ***********************************-->
     <div class="deznav">
         <div class="deznav-scroll">
             <ul class="metismenu" id="menu">
@@ -87,6 +87,26 @@
                         <li><a th:href="@{/user/allMan}">后台人员</a></li>
                         <li><a th:href="@{/user/allCus}">客户</a></li>
                     </ul>
+
+                </li>
+                <!--                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">-->
+                <!--                    <i class="flaticon-025-dashboard"></i>-->
+                <!--                    <span class="nav-text">运单管理</span>-->
+                <!--                </a>-->
+                <!--                    <ul aria-expanded="false">-->
+                <!--                        <li><a th:href="@{/addOrder}">添加运单</a></li>-->
+                <!--                        <li><a th:href="@{/allOrder}">运单列表</a></li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
+                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-025-dashboard"></i>
+                    <span class="nav-text">运输工具管理</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/coy/allCoy}">运输工具列表页</a></li>
+                        <li><a th:href="@{/coy/oneCoy}">运输工具详情页</a></li>
+                    </ul>
+                </li>
 
                 </li>
                 <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
@@ -155,7 +175,8 @@
     </div>
     <!--**********************************
         Sidebar end
-***********************************-->
+    ***********************************-->
+
 
     <!--**********************************
         Content body start
