@@ -129,7 +129,7 @@ public class ConveyanceController {
             return "back/exPage";
         }
         conveyanceService.setInfo(id, op, info);
-        return "redirect:/coy/oneCoy";
+        return "redirect:/coy/allCoy";
     }
 
 }

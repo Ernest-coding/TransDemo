@@ -338,7 +338,7 @@
                                                            th:onclick="'subSetType(3, ' + ${info.coyId} + ', $(\'\#type'+ ${info.coyId} +'\').val());'">修改运输类型</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item text-danger"
-                                                           th:href="@{'/coy/setInfo?type=1&info=null&op=0&id=' + ${info.coyId}}">删除</a>
+                                                           th:href="@{'/coy/setInfo?info=null&op=0&id=' + ${info.coyId}}">删除</a>
                                                     </div>
                                                 </div>
                                             </div>
