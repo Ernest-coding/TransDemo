@@ -193,7 +193,59 @@ public class WayBillServiceImpl implements IWayBillService {
         wb.setWbPrice(new BigDecimal(wbPrice));
         wb.setWbStatus(wbStatus);
         wb.setWbInfo(wbInfo);
+        wb.setUpdTime(LocalDateTime.now());
         wbMapper.updateById(wb);
+    }
+
+    @Override
+    public void setTran(Integer stId, Integer coyId, Integer type,
+                        String transLine, Integer status) {
+        SignalTrans sig = signalTransMapper.selectOne(new QueryWrapper<SignalTrans>().eq("sig_id", stId));
+        if (sig.getSigStatus() == 1) {
+            // 重置原本车辆的状态
+            Conveyance coy = conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("coy_id", sig.getSigCoyId()));
+            coy.setCoyStatus(1);
+            conveyanceMapper.updateById(coy);
+        }
+        sig.setSigCoyId(coyId);
+        sig.setSigType(type);
+        sig.setSigTransLine(transLine);
+        sig.setSigStatus(status);
+        sig.setUpdTime(LocalDateTime.now());
+        signalTransMapper.updateById(sig);
+        if (status == 1) {
+            // 设置当前车辆状态
+            Conveyance coy = conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("coy_id", coyId));
+            coy.setCoyStatus(2);
+            coy.setUpdTime(LocalDateTime.now());
+            conveyanceMapper.updateById(coy);
+        }
+    }
+
+    @Override
+    public void setCtd(Integer ctdId, Integer cgtxId, String address,
+                       String price, String startTime, String finishTime) {
+        CustomsDeclaration ctd = customsDeclarationMapper.selectOne(new QueryWrapper<CustomsDeclaration>().eq("ctd_id", ctdId));
+        ctd.setCtdCgtxId(cgtxId);
+        ctd.setCtdAddress(address);
+        ctd.setCtdPrice(new BigDecimal(price));
+        ctd.setCtdStartTime(startTime);
+        ctd.setCtdFinishTime(finishTime);
+        ctd.setUpdTime(LocalDateTime.now());
+        customsDeclarationMapper.updateById(ctd);
+    }
+
+    @Override
+    public void setArr(Integer arpId, String name, String inTime,
+                       String outTime, String perPrice, String mulPrice) {
+        ArrivalPortInfo arp = arrivalPortInfoMapper.selectOne(new QueryWrapper<ArrivalPortInfo>().eq("arp_id", arpId));
+        arp.setArpName(name);
+        arp.setArpInTime(inTime);
+        arp.setArpOutTime(outTime);
+        arp.setArpPerPrice(new BigDecimal(perPrice));
+        arp.setArpMulPrice(new BigDecimal(mulPrice));
+        arp.setUpdTime(LocalDateTime.now());
+        arrivalPortInfoMapper.updateById(arp);
     }
 
     @Override

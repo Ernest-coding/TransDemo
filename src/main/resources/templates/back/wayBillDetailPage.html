@@ -218,11 +218,11 @@
                                                 <input class="form-control" name="wbInfo" placeholder="说明信息"
                                                        th:value="${detail.wayBill.wbInfo} ? ${detail.wayBill.wbInfo} : ''" type="text">
                                             </div>
-                                            <div class="mb-3" style="visibility: hidden">
+                                            <div class="mb-3" style="display: none">
                                                 <label class="mb-1"><strong></strong></label>
                                                 <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer" style="margin-top: 4rem">
                                                 <a th:href="@{/wb/delWb(id=${detail.wayBill.wbId})}">
                                                     <button type="button" class="btn btn-danger light"
                                                            data-bs-dismiss="modal">删除运单</button>
@@ -400,11 +400,11 @@
                                                     <option value="2">已完成</option>
                                                 </select>
                                             </div>
-                                            <div class="mb-3" style="visibility: hidden">
+                                            <div class="mb-3" style="display: none">
                                                 <label class="mb-1"><strong></strong></label>
                                                 <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer" style="margin-top: 4rem">
                                                 <button type="button" class="btn btn-danger light"
                                                         data-bs-dismiss="modal">
                                                     取消
@@ -466,47 +466,62 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">添加用户</h5>
+                                            <h5 class="modal-title">修改运次信息</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal">
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" th:action="@{/user/addMan}">
+                                            <form method="post" th:action="@{/wb/setTran}">
                                                 <div class="mb-3">
-                                                    <label class="mb-1"><strong>账号</strong></label>
-                                                    <input class="form-control" name="act"
-                                                           placeholder="请输入账号"
-                                                           type="text">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="mb-1"><strong>密码</strong></label>
-                                                    <input class="form-control" name="pwd"
-                                                           placeholder="请输入密码" type="text">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="mb-1"><strong>姓名</strong></label>
-                                                    <input class="form-control" name="name"
-                                                           placeholder="请输入姓名" type="text">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="mb-1"><strong>手机号</strong></label>
-                                                    <input class="form-control" name="phone"
-                                                           placeholder="请输入手机号" type="text">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="mb-1"><strong>身份</strong></label>
-                                                    <select name="type" class="form-control wide mb-3">
-                                                        <option selected="selected" value="1">管理员
-                                                        </option>
-                                                        <option value="2">客户</option>
+                                                    <label class="mb-1"><strong>运输工具</strong></label>
+                                                    <select name="coyId" class="form-control wide mb-3"
+                                                            th:value="${info.sigCoyId} ? ${info.sigCoyId} : ''">
+                                                        <div th:each="coys : ${detail.conveyanceList}">
+                                                            <option th:text="${coys.coyName}"
+                                                                    th:value="${coys.coyId}">
+                                                            </option>
+                                                        </div>
                                                     </select>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>运次类型</strong></label>
+                                                    <select name="type" class="form-control wide mb-3"
+                                                            th:value="${info.sigType} ? ${info.sigType} : ''">
+                                                        <option selected="selected" value="1">国内运次</option>
+                                                        <option value="2">国际运次</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>运输线</strong></label>
+                                                    <input class="form-control" name="transLine" placeholder="例如：北京海淀--天津滨海"
+                                                           th:value="${info.sigTransLine} ? ${info.sigTransLine} : ''" type="text">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>运次状态</strong></label>
+                                                    <select name="status" class="form-control wide mb-3"
+                                                            th:value="${info.sigStatus} ? ${info.sigStatus} : ''">
+                                                        <option selected="selected" value="2">已完成</option>
+                                                        <option value="1">运输中</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3" style="display: none">
+                                                    <label class="mb-1"><strong></strong></label>
+                                                    <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
+                                                </div>
+                                                <div class="mb-3" style="display: none">
+                                                    <label class="mb-1"><strong></strong></label>
+                                                    <input class="form-control" name="stId" placeholder="" th:value="${info.sigId}" type="text">
+                                                </div>
+                                                <div class="modal-footer" style="margin-top: 4rem">
+                                                    <a th:href="@{/wb/delOth(op=1, wbId=${detail.wayBill.wbId}, id=${info.sigId})}">
+                                                        <button type="button" class="btn btn-danger light">删除运次</button>
+                                                                <!--data-bs-dismiss="modal">删除运次</button>-->
+                                                    </a>
                                                     <button type="button" class="btn btn-danger light"
                                                             data-bs-dismiss="modal">
                                                         取消
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary">添加
+                                                    <button type="submit" class="btn btn-primary">确认修改
                                                     </button>
                                                 </div>
                                             </form>
@@ -534,45 +549,49 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">添加用户</h5>
+                                    <h5 class="modal-title">添加报关信息</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" th:action="@{/user/addMan}">
+                                    <form method="post" th:action="@{/wb/addCtd}">
                                         <div class="mb-3">
-                                            <label class="mb-1"><strong>账号</strong></label>
-                                            <input class="form-control" name="act" placeholder="请输入账号"
-                                                   type="text">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>密码</strong></label>
-                                            <input class="form-control" name="pwd"
-                                                   placeholder="请输入密码" type="text">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>姓名</strong></label>
-                                            <input class="form-control" name="name"
-                                                   placeholder="请输入姓名" type="text">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>手机号</strong></label>
-                                            <input class="form-control" name="phone"
-                                                   placeholder="请输入手机号" type="text">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>身份</strong></label>
-                                            <select name="type" class="form-control wide mb-3">
-                                                <option selected="selected" value="1">管理员</option>
-                                                <option value="2">客户</option>
+                                            <label class="mb-1"><strong>货品税额</strong></label>
+                                            <select name="cgtxId" class="form-control wide mb-3">
+                                                <div th:each="cgtx : ${detail.cargoTaxDictionaryList}">
+                                                    <option th:text="${cgtx.ctdName} + ' -- ￥' + ${cgtx.ctdTax}"
+                                                            th:value="${cgtx.ctdId}">
+                                                    </option>
+                                                </div>
                                             </select>
                                         </div>
-                                        <div class="modal-footer">
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>报关地</strong></label>
+                                            <input class="form-control" name="address" placeholder="例如：北京海淀" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>总缴税额</strong></label>
+                                            <input class="form-control" name="price" placeholder="例如：99.99" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>开始报关时间</strong></label>
+                                            <input class="form-control" name="startTime" placeholder="例如：2022-08-04" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>结束报关时间</strong></label>
+                                            <input class="form-control" name="finishTime" placeholder="例如：2022-08-04" type="text">
+                                        </div>
+                                        <div class="mb-3" style="display: none">
+                                            <label class="mb-1"><strong></strong></label>
+                                            <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
+                                        </div>
+                                        <div class="modal-footer" style="margin-top: 4rem">
                                             <button type="button" class="btn btn-danger light"
                                                     data-bs-dismiss="modal">
                                                 取消
                                             </button>
-                                            <button type="submit" class="btn btn-primary">添加</button>
+                                            <button type="submit" class="btn btn-primary">添加
+                                            </button>
                                         </div>
                                     </form>
 
@@ -608,47 +627,60 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">添加用户</h5>
+                                        <h5 class="modal-title">修改报关信息</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" th:action="@{/user/addMan}">
+                                        <form method="post" th:action="@{/wb/setCtd}">
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>账号</strong></label>
-                                                <input class="form-control" name="act"
-                                                       placeholder="请输入账号"
-                                                       type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>密码</strong></label>
-                                                <input class="form-control" name="pwd"
-                                                       placeholder="请输入密码" type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>姓名</strong></label>
-                                                <input class="form-control" name="name"
-                                                       placeholder="请输入姓名" type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>手机号</strong></label>
-                                                <input class="form-control" name="phone"
-                                                       placeholder="请输入手机号" type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>身份</strong></label>
-                                                <select name="type" class="form-control wide mb-3">
-                                                    <option selected="selected" value="1">管理员
-                                                    </option>
-                                                    <option value="2">客户</option>
+                                                <label class="mb-1"><strong>货品税额</strong></label>
+                                                <select name="cgtxId" class="form-control wide mb-3"
+                                                        th:value="${info.ctdCgtxId} ? ${info.ctdCgtxId} : ''">
+                                                    <div th:each="cgtx : ${detail.cargoTaxDictionaryList}">
+                                                        <option th:text="${cgtx.ctdName} + ' -- ￥' + ${cgtx.ctdTax}"
+                                                                th:value="${cgtx.ctdId}">
+                                                        </option>
+                                                    </div>
                                                 </select>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>报关地</strong></label>
+                                                <input class="form-control" name="address" placeholder="例如：北京海淀"
+                                                       th:value="${info.ctdAddress} ? ${info.ctdAddress} : ''" type="text">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>总缴税额</strong></label>
+                                                <input class="form-control" name="price" placeholder="例如：99.99"
+                                                       th:value="${info.ctdPrice} ? ${info.ctdPrice} : ''" type="text">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>开始报关时间</strong></label>
+                                                <input class="form-control" name="startTime" placeholder="例如：2022-08-04"
+                                                       th:value="${info.ctdStartTime} ? ${info.ctdStartTime} : ''" type="text">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>结束报关时间</strong></label>
+                                                <input class="form-control" name="finishTime" placeholder="例如：2022-08-04"
+                                                       th:value="${info.ctdFinishTime} ? ${info.ctdFinishTime} : ''" type="text">
+                                            </div>
+                                            <div class="mb-3" style="display: none">
+                                                <label class="mb-1"><strong></strong></label>
+                                                <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
+                                            </div>
+                                            <div class="mb-3" style="display: none">
+                                                <label class="mb-1"><strong></strong></label>
+                                                <input class="form-control" name="ctdId" placeholder="" th:value="${info.ctdId}" type="text">
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 4rem">
+                                                <a th:href="@{/wb/delOth(op=2, wbId=${detail.wayBill.wbId}, id=${info.ctdId})}">
+                                                    <button type="button" class="btn btn-danger light">删除报关</button>
+                                                </a>
                                                 <button type="button" class="btn btn-danger light"
                                                         data-bs-dismiss="modal">
                                                     取消
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">添加
+                                                <button type="submit" class="btn btn-primary">确认修改
                                                 </button>
                                             </div>
                                         </form>
@@ -675,38 +707,35 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">添加用户</h5>
+                                    <h5 class="modal-title">添加到港信息</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" th:action="@{/user/addMan}">
+                                    <form method="post" th:action="@{/wb/addArr}">
                                         <div class="mb-3">
-                                            <label class="mb-1"><strong>账号</strong></label>
-                                            <input class="form-control" name="act" placeholder="请输入账号"
-                                                   type="text">
+                                            <label class="mb-1"><strong>空港名</strong></label>
+                                            <input class="form-control" name="name" placeholder="例如：天津港" type="text">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="mb-1"><strong>密码</strong></label>
-                                            <input class="form-control" name="pwd"
-                                                   placeholder="请输入密码" type="text">
+                                            <label class="mb-1"><strong>进港时间</strong></label>
+                                            <input class="form-control" name="inTime" placeholder="例如：2022-08-03" type="text">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="mb-1"><strong>姓名</strong></label>
-                                            <input class="form-control" name="name"
-                                                   placeholder="请输入姓名" type="text">
+                                            <label class="mb-1"><strong>离港时间</strong></label>
+                                            <input class="form-control" name="outTime" placeholder="例如：2022-08-04" type="text">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="mb-1"><strong>手机号</strong></label>
-                                            <input class="form-control" name="phone"
-                                                   placeholder="请输入手机号" type="text">
+                                            <label class="mb-1"><strong>单日停港费用</strong></label>
+                                            <input class="form-control" name="perPrice" placeholder="例如：300.00" type="text">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="mb-1"><strong>身份</strong></label>
-                                            <select name="type" class="form-control wide mb-3">
-                                                <option selected="selected" value="1">管理员</option>
-                                                <option value="2">客户</option>
-                                            </select>
+                                            <label class="mb-1"><strong>停港总费用</strong></label>
+                                            <input class="form-control" name="mulPrice" placeholder="例如：3000.00" type="text">
+                                        </div>
+                                        <div class="mb-3" style="display: none">
+                                            <label class="mb-1"><strong></strong></label>
+                                            <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger light"
@@ -730,15 +759,6 @@
                                     th:data-bs-target="'#arpInfoSet' + ${info.arpId}">点击修改本条到港信息</button>
                         </div>
                         <div class="card-body">
-                            <div class="row title" style="height:3rem">
-                                <div>
-                                        <span class="text-dark card-title card-intro-title" style="float: left"
-                                              th:text="${info.sigTransLine}"></span>
-                                    <span th:class="(${info.sigType} == 1) ? 'badge light badge-danger' : 'badge light badge-success'"
-                                          style="float: right"
-                                          th:text="(${info.sigType} == 1) ? '国内运次' : '国际运次'"></span>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div style="width: 49%; float: left">
                                     <p>空港名:<span class="badge badge-rounded badge-outline-light"
@@ -762,47 +782,54 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">添加用户</h5>
+                                        <h5 class="modal-title">修改到港信息</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" th:action="@{/user/addMan}">
+                                        <form method="post" th:action="@{/wb/setArr}">
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>账号</strong></label>
-                                                <input class="form-control" name="act"
-                                                       placeholder="请输入账号"
-                                                       type="text">
+                                                <label class="mb-1"><strong>空港名</strong></label>
+                                                <input class="form-control" name="name" placeholder="例如：天津港"
+                                                       th:value="${info.arpName} ? ${info.arpName} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>密码</strong></label>
-                                                <input class="form-control" name="pwd"
-                                                       placeholder="请输入密码" type="text">
+                                                <label class="mb-1"><strong>进港时间</strong></label>
+                                                <input class="form-control" name="inTime" placeholder="例如：2022-08-03"
+                                                       th:value="${info.arpInTime} ? ${info.arpInTime} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>姓名</strong></label>
-                                                <input class="form-control" name="name"
-                                                       placeholder="请输入姓名" type="text">
+                                                <label class="mb-1"><strong>离港时间</strong></label>
+                                                <input class="form-control" name="outTime" placeholder="例如：2022-08-04"
+                                                       th:value="${info.arpOutTime} ? ${info.arpOutTime} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>手机号</strong></label>
-                                                <input class="form-control" name="phone"
-                                                       placeholder="请输入手机号" type="text">
+                                                <label class="mb-1"><strong>单日停港费用</strong></label>
+                                                <input class="form-control" name="perPrice" placeholder="例如：300.00"
+                                                       th:value="${info.arpPerPrice} ? ${info.arpPerPrice} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>身份</strong></label>
-                                                <select name="type" class="form-control wide mb-3">
-                                                    <option selected="selected" value="1">管理员
-                                                    </option>
-                                                    <option value="2">客户</option>
-                                                </select>
+                                                <label class="mb-1"><strong>停港总费用</strong></label>
+                                                <input class="form-control" name="mulPrice" placeholder="例如：3000.00"
+                                                       th:value="${info.arpMulPrice} ? ${info.arpMulPrice} : ''" type="text">
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="mb-3" style="display: none">
+                                                <label class="mb-1"><strong></strong></label>
+                                                <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
+                                            </div>
+                                            <div class="mb-3" style="display: none">
+                                                <label class="mb-1"><strong></strong></label>
+                                                <input class="form-control" name="arpId" placeholder="" th:value="${info.arpId}" type="text">
+                                            </div>
+                                            <div class="modal-footer" style="margin-top: 4rem">
+                                                <a th:href="@{/wb/delOth(op=3, wbId=${detail.wayBill.wbId}, id=${info.arpId})}">
+                                                    <button type="button" class="btn btn-danger light">删除到港</button>
+                                                </a>
                                                 <button type="button" class="btn btn-danger light"
                                                         data-bs-dismiss="modal">
                                                     取消
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">添加
+                                                <button type="submit" class="btn btn-primary">确认修改
                                                 </button>
                                             </div>
                                         </form>

@@ -37,4 +37,10 @@ public interface IWayBillService {
     void setWbInfo(Integer wbId, String wbReceName, String wbRecePhone,
                    String wbReceAddress, String wbReceTime, String wbPrice,
                    Integer wbStatus, String wbInfo);
+
+    void setTran(Integer stId, Integer coyId, Integer type, String transLine, Integer status);
+
+    void setCtd(Integer ctdId, Integer cgtxId, String address, String price, String startTime, String finishTime);
+
+    void setArr(Integer arpId, String name, String inTime, String outTime, String perPrice, String mulPrice);
 }
