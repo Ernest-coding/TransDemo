@@ -292,7 +292,7 @@ public class WayBillController {
      * @param wbInfo        运单说明信息
      * @return
      */
-    @GetMapping("/setWbInfo")
+    @PostMapping("/setWbInfo")
     public String setWbInfo(RedirectAttributes attr, ModelMap map, HttpSession session,
                             @RequestParam(name = "wbId") Integer wbId,
                             @RequestParam(name = "wbReceName") String wbReceName,

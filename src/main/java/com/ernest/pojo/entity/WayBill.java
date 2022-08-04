@@ -95,7 +95,7 @@ public class WayBill implements Serializable {
     private BigDecimal wbPrice;
 
     /**
-     * 状态   1-已下单  2-发出，这个过程需要核对  3-已签收
+     * 状态   1-已下单（国际运单还包括检视报关中）  2-已发出  3-运输中  4-到港  5-运输中  6-已签收
      */
     private Integer wbStatus;
 

@@ -106,7 +106,6 @@ public class BaseOpServiceImpl implements IBaseOpService {
         session.setAttribute("limit", limit);
         session.setMaxInactiveInterval(1800);
         log.debug(DebugSoutUtils.soutDebugInfo() + "====>  用户登录");
-        System.out.println(DebugSoutUtils.soutDebugInfo() + "====>  用户登录");
     }
 
 

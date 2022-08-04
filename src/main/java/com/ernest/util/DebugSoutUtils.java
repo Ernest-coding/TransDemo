@@ -25,7 +25,7 @@ public class DebugSoutUtils {
         Date date = new Date();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
-        return "[ " + sdf.format(date) + " ]  id: " +
+        return "id: " +
                 session.getAttribute("id").toString() +
                 " act: " + session.getAttribute("act") +
                 " name: " + session.getAttribute("name") +

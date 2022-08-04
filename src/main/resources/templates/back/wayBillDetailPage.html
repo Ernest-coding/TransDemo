@@ -161,56 +161,77 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">运单基本信息</h4>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#wbBaseInfo">
-                                <span class="btn-icon-start text-primary"><i class="fa fa-plus color-info"></i>
-                                    </span>添加
+                        <button type="button" class="btn btn-spotify" data-bs-toggle="modal"
+                                data-bs-target="#wbBaseInfo">修改
+                            <span class="btn-icon-end"><i class="fab fa-spotify"></i></span>
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" id="wbBaseInfo">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">添加用户</h5>
+                                        <h5 class="modal-title">修改运单信息</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" th:action="@{/user/addMan}">
+                                        <form method="post" th:action="@{/wb/setWbInfo}">
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>账号</strong></label>
-                                                <input class="form-control" name="act" placeholder="请输入账号"
-                                                       type="text">
+                                                <label class="mb-1"><strong>收件人姓名</strong></label>
+                                                <input class="form-control" name="wbReceName" placeholder="收件人姓名"
+                                                       th:value="${detail.wayBill.wbReceName} ? ${detail.wayBill.wbReceName} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>密码</strong></label>
-                                                <input class="form-control" name="pwd"
-                                                       placeholder="请输入密码" type="text">
+                                                <label class="mb-1"><strong>收件人手机</strong></label>
+                                                <input class="form-control" name="wbRecePhone" placeholder="收件人手机"
+                                                       th:value="${detail.wayBill.wbRecePhone} ? ${detail.wayBill.wbRecePhone} : ''" type="tel">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>姓名</strong></label>
-                                                <input class="form-control" name="name"
-                                                       placeholder="请输入姓名" type="text">
+                                                <label class="mb-1"><strong>收件人地址</strong></label>
+                                                <input class="form-control" name="wbReceAddress" placeholder="收件人地址"
+                                                       th:value="${detail.wayBill.wbReceAddress} ? ${detail.wayBill.wbReceAddress} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>手机号</strong></label>
-                                                <input class="form-control" name="phone"
-                                                       placeholder="请输入手机号" type="text">
+                                                <label class="mb-1"><strong>签收时间</strong></label>
+                                                <input class="form-control" name="wbReceTime" placeholder="签收时间"
+                                                       th:value="${detail.wayBill.wbReceTime} ? ${detail.wayBill.wbReceTime} : ''" type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>身份</strong></label>
-                                                <select name="type" class="form-control wide mb-3">
-                                                    <option selected="selected" value="1">管理员</option>
-                                                    <option value="2">客户</option>
+                                                <label class="mb-1"><strong>运单价格</strong></label>
+                                                <input class="form-control" name="wbPrice" placeholder="运单价格"
+                                                       th:value="${detail.wayBill.wbPrice} ? ${detail.wayBill.wbPrice} : ''" type="text">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>运单状态</strong></label>
+                                                <select name="wbStatus" class="form-control wide mb-3"
+                                                        th:value="${detail.wayBill.wbStatus} ? ${detail.wayBill.wbStatus} : ''">
+                                                    <option selected="selected" value="1">已下单</option>
+                                                    <option value="2">已发出</option>
+                                                    <option value="3">运输中</option>
+                                                    <option value="4">到港</option>
+                                                    <option value="5">运输中</option>
+                                                    <option value="6">已签收</option>
                                                 </select>
                                             </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>说明信息</strong></label>
+                                                <input class="form-control" name="wbInfo" placeholder="说明信息"
+                                                       th:value="${detail.wayBill.wbInfo} ? ${detail.wayBill.wbInfo} : ''" type="text">
+                                            </div>
+                                            <div class="mb-3" style="visibility: hidden">
+                                                <label class="mb-1"><strong></strong></label>
+                                                <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
+                                            </div>
                                             <div class="modal-footer">
+                                                <a th:href="@{/wb/delWb(id=${detail.wayBill.wbId})}">
+                                                    <button type="button" class="btn btn-danger light"
+                                                           data-bs-dismiss="modal">删除运单</button>
+                                                </a>
                                                 <button type="button" class="btn btn-danger light"
                                                         data-bs-dismiss="modal">
                                                     取消
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">添加</button>
+                                                <button type="submit" class="btn btn-primary">确认修改</button>
                                             </div>
                                         </form>
 
@@ -221,7 +242,113 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        运单信息
+                        <div>
+                            <div class="row title" style="height:3rem">
+                                <h4>
+                                    <!--<span class="text-primary card-title card-intro-title" style="float: left"-->
+                                    <span class="btn btn-outline-secondary" style="float: left"
+                                          th:text="${detail.wayBill.wbSendAddress}"></span>
+                                    <span class="btn tp-btn btn-dark" style="float: left"
+                                    >  →  </span>
+                                    <span class="btn btn-outline-secondary" style="float: left"
+                                          th:text="${detail.wayBill.wbReceAddress}"></span>
+                                    <span th:class="(${detail.wayBill.wbType} == 1) ? 'badge light badge-danger' : 'badge light badge-success'"
+                                          style="float: right"
+                                          th:text="(${detail.wayBill.wbType} == 1) ? '国内运单' : '国际运单'"></span>
+                                </h4>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <div class="new-arrival-content position-relative">
+                                        <p class="price" th:text="'￥ ' + ${detail.wayBill.wbPrice}"></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="" style="width: 30%; float: left">
+                                            <p>货物名称: <span class="badge badge-rounded badge-outline-light"
+                                                               th:text="${detail.cargoInfo.cgiName}"> # </span></p>
+                                            <p>货物编号: <span class="badge badge-rounded badge-outline-light"
+                                                               th:text="${detail.cargoInfo.cgiNumber}"> # </span></p>
+                                        </div>
+                                        <div class="" style="width: 69%; float: right">
+                                            <p>货物价值: <span class="badge badge-rounded badge-outline-light"
+                                                               th:text="${detail.cargoInfo.cgiValue}">#</span></p>
+                                            <p>货物说明信息: <span class="badge badge-rounded badge-outline-light"
+                                                                   th:text="${detail.cargoInfo.cgiInfo}">#</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="width: 20%; float: left;">
+                                            <p class="item" th:switch="${detail.wayBill.wbStatus}">当前状态:
+                                                <span class="badge badge-rounded badge-outline-success"
+                                                      th:case="1">已下单</span>
+                                                <span class="badge badge-rounded badge-outline-success"
+                                                      th:case="2">已发出</span>
+                                                <span class="badge badge-rounded badge-outline-success"
+                                                      th:case="3">运输中</span>
+                                                <span class="badge badge-rounded badge-outline-success"
+                                                      th:case="4">到港</span>
+                                                <span class="badge badge-rounded badge-outline-success"
+                                                      th:case="5">运输中</span>
+                                                <span class="badge badge-rounded badge-outline-success"
+                                                      th:case="6">已签收</span>
+                                                <span class="badge badge-rounded badge-outline-light"
+                                                      th:case="*">未知状态</span>
+                                            </p>
+                                        </div>
+                                        <div style="width: 79%; float: right">
+                                            <p class="item">运单说明信息:
+                                                <span class="badge badge-rounded badge-outline-light"
+                                                      th:text="${detail.wayBill.wbInfo}"></span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar bg-success"
+                                         th:style="'width:' + ${detail.wayBill.wbStatus} * 100 / 6.0 + '%; height:10px;'"
+                                         role="progressbar">
+                                        <span class="sr-only">当前状态</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card" style="float: left; width: 47%">
+                                    <div class="card-header">
+                                        <h5 class="card-title--medium">发件信息</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>发件人:<span class="badge badge-rounded badge-outline-light"
+                                                        th:text="${detail.wayBill.wbSendName}"> # </span></p>
+                                        <p>发件人联系方式: <span class="badge badge-rounded badge-outline-light"
+                                                                 th:text="${detail.wayBill.wbSendPhone}"> # </span></p>
+                                        <p>发出地: <span class="badge badge-rounded badge-outline-light"
+                                                         th:text="${detail.wayBill.wbSendAddress}">#</span></p>
+                                        <p>发出时间: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${detail.wayBill.wbSendTime}">#</span></p>
+                                    </div>
+                                </div>
+                                <div class="card" style="float: right; width: 47%; margin-left: 6%">
+                                    <div class="card-header">
+                                        <h5 class="card-title--medium">收件信息</h5></div>
+                                    <div class="card-body">
+                                        <p>收件人: <span class="badge badge-rounded badge-outline-light"
+                                                         th:text="${detail.wayBill.wbReceName}"> # </span></p>
+                                        <p>收件人联系方式: <span class="badge badge-rounded badge-outline-light"
+                                                                 th:text="${detail.wayBill.wbRecePhone}"> # </span></p>
+                                        <p>目的地: <span class="badge badge-rounded badge-outline-light"
+                                                         th:text="${detail.wayBill.wbReceAddress}">#</span></p>
+                                        <p>预计抵达: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${detail.wayBill.wbReceTime}">#</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
@@ -238,38 +365,44 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">添加用户</h5>
+                                        <h5 class="modal-title">添加运次</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" th:action="@{/user/addMan}">
+                                        <form method="post" th:action="@{/wb/addTran}">
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>账号</strong></label>
-                                                <input class="form-control" name="act" placeholder="请输入账号"
+                                                <label class="mb-1"><strong>运输工具</strong></label>
+                                                <select name="coyId" class="form-control wide mb-3">
+                                                    <div th:each="coys : ${detail.conveyanceList}">
+                                                        <option th:text="${coys.coyName}"
+                                                                th:value="${coys.coyId}">
+                                                        </option>
+                                                    </div>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>运次类型</strong></label>
+                                                <select name="type" class="form-control wide mb-3">
+                                                    <option selected="selected" value="1">国内运次</option>
+                                                    <option value="2">国际运次</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-1"><strong>运输线</strong></label>
+                                                <input class="form-control" name="transLine" placeholder="例如：北京海淀--天津滨海"
                                                        type="text">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="mb-1"><strong>密码</strong></label>
-                                                <input class="form-control" name="pwd"
-                                                       placeholder="请输入密码" type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>姓名</strong></label>
-                                                <input class="form-control" name="name"
-                                                       placeholder="请输入姓名" type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>手机号</strong></label>
-                                                <input class="form-control" name="phone"
-                                                       placeholder="请输入手机号" type="text">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1"><strong>身份</strong></label>
-                                                <select name="type" class="form-control wide mb-3">
-                                                    <option selected="selected" value="1">管理员</option>
-                                                    <option value="2">客户</option>
+                                                <label class="mb-1"><strong>运次状态</strong></label>
+                                                <select name="status" class="form-control wide mb-3">
+                                                    <option selected="selected" value="1">运输中</option>
+                                                    <option value="2">已完成</option>
                                                 </select>
+                                            </div>
+                                            <div class="mb-3" style="visibility: hidden">
+                                                <label class="mb-1"><strong></strong></label>
+                                                <input class="form-control" name="wbId" placeholder="" th:value="${detail.wayBill.wbId}" type="text">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger light"
@@ -286,84 +419,192 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="col-lg-12 col-xl-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row m-b-30">
-
-                                        <div class="col-md-7 col-xxl-12">
-                                            <div class="new-arrival-content position-relative">
-                                                <h4><a href="">北京 --> 广东</a></h4>
-                                                <div class="comment-review star-rating">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                    </ul>
-                                                    <p class="price">￥ 320.00</p>
-                                                </div>
-                                                <p>发件人: <span class="item"> 李敏杰 <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                                <p>发出地: <span class="item">北京市海淀区成府路口南</span></p>
-                                                <p>目的地: <span class="item">甘肃省天水市秦安县康坡村</span></p>
-                                                <p>邮编: <span class="item">100000</span></p>
-                                                <p>发出时间: <span class="item">2022-07-16</span></p>
-                                                <p>预计抵达: <span class="item">2022-07-19</span></p>
-                                                <p class="text-content">加急易碎品</p>
-                                            </div>
-                                        </div>
+                    <div class="card-body" th:each="info : ${detail.signalTransList}">
+                        <div class="card">
+                            <div class="card-header">
+                                <button type="button" class="btn  btn-square btn-primary" data-bs-toggle="modal"
+                                        th:data-bs-target="'#transInfoSet' + ${info.sigId}">点击修改本运次相关信息</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="row title" style="height:3rem">
+                                    <div>
+                                        <span class="text-dark card-title card-intro-title" style="float: left"
+                                                  th:text="${info.sigTransLine}"></span>
+                                        <span th:class="(${info.sigType} == 1) ? 'badge light badge-danger' : 'badge light badge-success'"
+                                              style="float: right"
+                                              th:text="(${info.sigType} == 1) ? '国内运次' : '国际运次'"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div style="width: 49%; float: left">
+                                        <p>负责人:<span class="badge badge-rounded badge-outline-light"
+                                                        th:text="${info.conveyance.coyPrincipalName}"> # </span></p>
+                                        <p>负责人联系方式: <span class="badge badge-rounded badge-outline-light"
+                                                                 th:text="${info.conveyance.coyPrincipalPhone}"> # </span>
+                                        </p>
+                                        <p>运输工具证件信息: <span class="badge badge-rounded badge-outline-light"
+                                                                   th:text="${info.conveyance.coyLicense}">#</span></p>
+                                        <p>添加时间: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.addTime}">#</span></p>
+                                    </div>
+                                    <div style="width: 49%; float: right">
+                                        <p>运输工具: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.conveyance.coyName}">#</span></p>
+                                        <p>运输工具类型: <span class="badge badge-rounded badge-outline-light"
+                                                               th:text="(${info.conveyance.coyType} == 1) ? '空运'
+                                                       : ((${info.conveyance.coyType} == 2) ? '海运' : '陆运')">#</span>
+                                        </p>
+                                        <p>运次状态: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="(${info.sigStatus} == 1) ? '运输中' : '已完成'">#</span>
+                                        </p>
+                                        <p>更新时间: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.updTime}">#</span></p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 col-xl-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row m-b-30">
-
-                                        <div class="col-md-7 col-xxl-12">
-                                            <div class="new-arrival-content position-relative">
-                                                <h4><a href="">北京 --> 广东</a></h4>
-                                                <div class="comment-review star-rating">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                    </ul>
-                                                    <p class="price">￥ 320.00</p>
-                                                </div>
-                                                <p>发件人: <span class="item"> 李敏杰 <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                                <p>发出地: <span class="item">北京市海淀区成府路口南</span></p>
-                                                <p>目的地: <span class="item">甘肃省天水市秦安县康坡村</span></p>
-                                                <p>邮编: <span class="item">100000</span></p>
-                                                <p>发出时间: <span class="item">2022-07-16</span></p>
-                                                <p>预计抵达: <span class="item">2022-07-19</span></p>
-                                                <p class="text-content">加急易碎品</p>
-                                            </div>
+                            <div class="modal fade" th:id="'transInfoSet' + ${info.sigId}">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">添加用户</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                            </button>
                                         </div>
+                                        <div class="modal-body">
+                                            <form method="post" th:action="@{/user/addMan}">
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>账号</strong></label>
+                                                    <input class="form-control" name="act"
+                                                           placeholder="请输入账号"
+                                                           type="text">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>密码</strong></label>
+                                                    <input class="form-control" name="pwd"
+                                                           placeholder="请输入密码" type="text">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>姓名</strong></label>
+                                                    <input class="form-control" name="name"
+                                                           placeholder="请输入姓名" type="text">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>手机号</strong></label>
+                                                    <input class="form-control" name="phone"
+                                                           placeholder="请输入手机号" type="text">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>身份</strong></label>
+                                                    <select name="type" class="form-control wide mb-3">
+                                                        <option selected="selected" value="1">管理员
+                                                        </option>
+                                                        <option value="2">客户</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger light"
+                                                            data-bs-dismiss="modal">
+                                                        取消
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary">添加
+                                                    </button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">报关信息</h4>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#ctdInfo">
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">报关信息</h4>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#ctdInfo">
                                 <span class="btn-icon-start text-primary"><i class="fa fa-plus color-info"></i>
                                     </span>添加
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="ctdInfo">
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="ctdInfo">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">添加用户</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" th:action="@{/user/addMan}">
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>账号</strong></label>
+                                            <input class="form-control" name="act" placeholder="请输入账号"
+                                                   type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>密码</strong></label>
+                                            <input class="form-control" name="pwd"
+                                                   placeholder="请输入密码" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>姓名</strong></label>
+                                            <input class="form-control" name="name"
+                                                   placeholder="请输入姓名" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>手机号</strong></label>
+                                            <input class="form-control" name="phone"
+                                                   placeholder="请输入手机号" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>身份</strong></label>
+                                            <select name="type" class="form-control wide mb-3">
+                                                <option selected="selected" value="1">管理员</option>
+                                                <option value="2">客户</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger light"
+                                                    data-bs-dismiss="modal">
+                                                取消
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">添加</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" th:each="info : ${detail.customsDeclaration}">
+                    <div class="card">
+                        <div class="card-header">
+                            <button type="button" class="btn  btn-square btn-primary" data-bs-toggle="modal"
+                                    th:data-bs-target="'#ctdInfoSet' + ${info.ctdId}">点击修改本条报关信息</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div style="width: 49%; float: left">
+                                    <p>报关地:<span class="badge badge-rounded badge-outline-light"
+                                                    th:text="${info.ctdAddress}"> # </span></p>
+                                    <p>报关开始时间: <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.ctdStartTime}">#</span></p>
+                                </div>
+                                <div style="width: 49%; float: right">
+                                    <p>总缴税额: ￥ <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.ctdPrice}">#</span></p>
+                                    <p>报关完成时间: <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.ctdFinishTime}">#</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" th:id="'ctdInfoSet' + ${info.ctdId}">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -375,7 +616,8 @@
                                         <form method="post" th:action="@{/user/addMan}">
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>账号</strong></label>
-                                                <input class="form-control" name="act" placeholder="请输入账号"
+                                                <input class="form-control" name="act"
+                                                       placeholder="请输入账号"
                                                        type="text">
                                             </div>
                                             <div class="mb-3">
@@ -396,7 +638,8 @@
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>身份</strong></label>
                                                 <select name="type" class="form-control wide mb-3">
-                                                    <option selected="selected" value="1">管理员</option>
+                                                    <option selected="selected" value="1">管理员
+                                                    </option>
                                                     <option value="2">客户</option>
                                                 </select>
                                             </div>
@@ -405,7 +648,8 @@
                                                         data-bs-dismiss="modal">
                                                     取消
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">添加</button>
+                                                <button type="submit" class="btn btn-primary">添加
+                                                </button>
                                             </div>
                                         </form>
 
@@ -415,21 +659,106 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        运单信息
-                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">到港信息</h4>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#arpInfo">
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">到港信息</h4>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#arpInfo">
                                 <span class="btn-icon-start text-primary"><i class="fa fa-plus color-info"></i>
                                     </span>添加
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="arpInfo">
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="arpInfo">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">添加用户</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" th:action="@{/user/addMan}">
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>账号</strong></label>
+                                            <input class="form-control" name="act" placeholder="请输入账号"
+                                                   type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>密码</strong></label>
+                                            <input class="form-control" name="pwd"
+                                                   placeholder="请输入密码" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>姓名</strong></label>
+                                            <input class="form-control" name="name"
+                                                   placeholder="请输入姓名" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>手机号</strong></label>
+                                            <input class="form-control" name="phone"
+                                                   placeholder="请输入手机号" type="text">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="mb-1"><strong>身份</strong></label>
+                                            <select name="type" class="form-control wide mb-3">
+                                                <option selected="selected" value="1">管理员</option>
+                                                <option value="2">客户</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger light"
+                                                    data-bs-dismiss="modal">
+                                                取消
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">添加</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" th:each="info : ${detail.arrivalPortInfo}">
+                    <div class="card">
+                        <div class="card-header">
+                            <button type="button" class="btn  btn-square btn-primary" data-bs-toggle="modal"
+                                    th:data-bs-target="'#arpInfoSet' + ${info.arpId}">点击修改本条到港信息</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row title" style="height:3rem">
+                                <div>
+                                        <span class="text-dark card-title card-intro-title" style="float: left"
+                                              th:text="${info.sigTransLine}"></span>
+                                    <span th:class="(${info.sigType} == 1) ? 'badge light badge-danger' : 'badge light badge-success'"
+                                          style="float: right"
+                                          th:text="(${info.sigType} == 1) ? '国内运次' : '国际运次'"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="width: 49%; float: left">
+                                    <p>空港名:<span class="badge badge-rounded badge-outline-light"
+                                                    th:text="${info.arpName}"> # </span></p>
+                                    <p>到港时间: <span class="badge badge-rounded badge-outline-light"
+                                                             th:text="${info.arpInTime}"> # </span></p>
+                                    <p>添加时间: <span class="badge badge-rounded badge-outline-light"
+                                                               th:text="${info.addTime}">#</span></p>
+                                </div>
+                                <div style="width: 49%; float: right">
+                                    <p>停港费用: <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.arpMulPrice}">#</span></p>
+                                    <p>离港时间: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.arpOutTime}">#</span></p>
+                                    <p>更新时间: <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.updTime}">#</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" th:id="'arpInfoSet' + ${info.arpId}">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -441,7 +770,8 @@
                                         <form method="post" th:action="@{/user/addMan}">
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>账号</strong></label>
-                                                <input class="form-control" name="act" placeholder="请输入账号"
+                                                <input class="form-control" name="act"
+                                                       placeholder="请输入账号"
                                                        type="text">
                                             </div>
                                             <div class="mb-3">
@@ -462,7 +792,8 @@
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>身份</strong></label>
                                                 <select name="type" class="form-control wide mb-3">
-                                                    <option selected="selected" value="1">管理员</option>
+                                                    <option selected="selected" value="1">管理员
+                                                    </option>
                                                     <option value="2">客户</option>
                                                 </select>
                                             </div>
@@ -471,78 +802,13 @@
                                                         data-bs-dismiss="modal">
                                                     取消
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">添加</button>
+                                                <button type="submit" class="btn btn-primary">添加
+                                                </button>
                                             </div>
                                         </form>
 
                                     </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="col-lg-12 col-xl-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row m-b-30">
-
-                                        <div class="col-md-7 col-xxl-12">
-                                            <div class="new-arrival-content position-relative">
-                                                <h4><a href="">北京 --> 广东</a></h4>
-                                                <div class="comment-review star-rating">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                    </ul>
-                                                    <p class="price">￥ 320.00</p>
-                                                </div>
-                                                <p>发件人: <span class="item"> 李敏杰 <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                                <p>发出地: <span class="item">北京市海淀区成府路口南</span></p>
-                                                <p>目的地: <span class="item">甘肃省天水市秦安县康坡村</span></p>
-                                                <p>邮编: <span class="item">100000</span></p>
-                                                <p>发出时间: <span class="item">2022-07-16</span></p>
-                                                <p>预计抵达: <span class="item">2022-07-19</span></p>
-                                                <p class="text-content">加急易碎品</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-xl-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row m-b-30">
-
-                                        <div class="col-md-7 col-xxl-12">
-                                            <div class="new-arrival-content position-relative">
-                                                <h4><a href="">北京 --> 广东</a></h4>
-                                                <div class="comment-review star-rating">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                    </ul>
-                                                    <p class="price">￥ 320.00</p>
-                                                </div>
-                                                <p>发件人: <span class="item"> 李敏杰 <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                                <p>发出地: <span class="item">北京市海淀区成府路口南</span></p>
-                                                <p>目的地: <span class="item">甘肃省天水市秦安县康坡村</span></p>
-                                                <p>邮编: <span class="item">100000</span></p>
-                                                <p>发出时间: <span class="item">2022-07-16</span></p>
-                                                <p>预计抵达: <span class="item">2022-07-19</span></p>
-                                                <p class="text-content">加急易碎品</p>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -551,30 +817,31 @@
             </div>
         </div>
     </div>
-    <!--**********************************
-        Content body end
-    ***********************************-->
+</div>
+<!--**********************************
+    Content body end
+***********************************-->
 
 
-    <!--**********************************
-        Footer start
-    ***********************************-->
-    <div class="footer">
-        <div class="copyright">
-            <p>Copyright &copy; 2022. Ernest </p>
-        </div>
+<!--**********************************
+    Footer start
+***********************************-->
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright &copy; 2022. Ernest </p>
     </div>
-    <!--**********************************
-        Footer end
-    ***********************************-->
+</div>
+<!--**********************************
+    Footer end
+***********************************-->
 
-    <!--**********************************
-       Support ticket button start
-    ***********************************-->
+<!--**********************************
+   Support ticket button start
+***********************************-->
 
-    <!--**********************************
-       Support ticket button end
-    ***********************************-->
+<!--**********************************
+   Support ticket button end
+***********************************-->
 
 
 </div>

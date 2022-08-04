@@ -82,6 +82,7 @@ public class ConveyanceController {
     public String add(ModelMap map,
                       @RequestParam(name = "userName") String userName,
                       @RequestParam(name = "userPhone") String userPhone,
+                      @RequestParam(name = "name") String name,
                       @RequestParam(name = "type") Integer type,
                       @RequestParam(name = "license") String license,
                       @RequestParam(name = "address") String address,
@@ -89,6 +90,7 @@ public class ConveyanceController {
         Conveyance entity = new Conveyance();
         entity.setCoyPrincipalName(userName);
         entity.setCoyPrincipalPhone(userPhone);
+        entity.setCoyName(name);
         entity.setCoyType(type);
         entity.setCoyStatus(1);
         entity.setCoyLicense(license);

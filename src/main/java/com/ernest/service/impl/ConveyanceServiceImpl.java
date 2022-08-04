@@ -14,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class ConveyanceServiceImpl implements IConveyanceService {
      * @param item do
      * @return vo
      */
-    public static ConveyanceListPage convertToConveyanceListPage(Conveyance item) {
+    public ConveyanceListPage convertToConveyanceListPage(Conveyance item) {
         if (item == null) {
             return null;
         }
@@ -155,6 +156,7 @@ public class ConveyanceServiceImpl implements IConveyanceService {
         }
         WayBill wayBill = wayBillMapper.selectOne(new QueryWrapper<WayBill>().eq("wb_id", item.getSigWbId()));
         SignalTransPage result = new SignalTransPage();
+        result.setConveyance(conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("coy_id", item.getSigCoyId())));
         result.setSigStatusTheme(item.getSigStatus() == 1 ? "badge light badge-info" : "badge light badge-success");
         result.setTranNum(wayBill.getWbNum());
         result.setTranType(wayBill.getWbType() == 1 ? "国内运单" : "国际运单");

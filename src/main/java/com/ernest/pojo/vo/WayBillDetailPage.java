@@ -25,7 +25,7 @@ public class WayBillDetailPage implements Serializable {
     /**
      * 运次列表
      */
-    private List<SignalTrans> signalTransList;
+    private List<SignalTransPage> signalTransList;
 
     /**
      * 到港信息列表
@@ -35,7 +35,7 @@ public class WayBillDetailPage implements Serializable {
     /**
      * 报关信息
      */
-    private CustomsDeclaration customsDeclaration;
+    private List<CustomsDeclaration> customsDeclaration;
 
     /**
      * 运输工具列表，添加运次用
