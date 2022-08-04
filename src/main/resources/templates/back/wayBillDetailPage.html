@@ -215,7 +215,7 @@
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>签收时间</strong></label>
                                                 <input class="form-control" name="wbReceTime" placeholder="签收时间"
-                                                       th:value="${detail.wayBill.wbReceTime} ? ${detail.wayBill.wbReceTime} : ''" type="text">
+                                                       th:value="${detail.wayBill.wbReceTime} ? ${detail.wayBill.wbReceTime} : ''" type="datetime-local">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>运单价格</strong></label>
@@ -596,11 +596,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>开始报关时间</strong></label>
-                                            <input class="form-control" name="startTime" placeholder="例如：2022-08-04" type="text">
+                                            <input class="form-control" name="startTime" placeholder="" type="datetime-local">
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>结束报关时间</strong></label>
-                                            <input class="form-control" name="finishTime" placeholder="例如：2022-08-04" type="text">
+                                            <input class="form-control" name="finishTime" placeholder="" type="datetime-local">
                                         </div>
                                         <div class="mb-3" style="display: none">
                                             <label class="mb-1"><strong></strong></label>
@@ -677,13 +677,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>开始报关时间</strong></label>
-                                                <input class="form-control" name="startTime" placeholder="例如：2022-08-04"
-                                                       th:value="${info.ctdStartTime} ? ${info.ctdStartTime} : ''" type="text">
+                                                <input class="form-control" name="startTime" placeholder=""
+                                                       th:value="${info.ctdStartTime} ? ${info.ctdStartTime} : ''" type="datetime-local">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>结束报关时间</strong></label>
-                                                <input class="form-control" name="finishTime" placeholder="例如：2022-08-04"
-                                                       th:value="${info.ctdFinishTime} ? ${info.ctdFinishTime} : ''" type="text">
+                                                <input class="form-control" name="finishTime" placeholder=""
+                                                       th:value="${info.ctdFinishTime} ? ${info.ctdFinishTime} : ''" type="datetime-local">
                                             </div>
                                             <div class="mb-3" style="display: none">
                                                 <label class="mb-1"><strong></strong></label>
@@ -740,11 +740,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>进港时间</strong></label>
-                                            <input class="form-control" name="inTime" placeholder="例如：2022-08-03" type="text">
+                                            <input class="form-control" name="inTime" placeholder="" type="datetime-local">
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>离港时间</strong></label>
-                                            <input class="form-control" name="outTime" placeholder="例如：2022-08-04" type="text">
+                                            <input class="form-control" name="outTime" placeholder="" type="datetime-local">
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>单日停港费用</strong></label>
@@ -816,13 +816,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>进港时间</strong></label>
-                                                <input class="form-control" name="inTime" placeholder="例如：2022-08-03"
-                                                       th:value="${info.arpInTime} ? ${info.arpInTime} : ''" type="text">
+                                                <input class="form-control" name="inTime" placeholder=""
+                                                       th:value="${info.arpInTime} ? ${info.arpInTime} : ''" type="datetime-local">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>离港时间</strong></label>
-                                                <input class="form-control" name="outTime" placeholder="例如：2022-08-04"
-                                                       th:value="${info.arpOutTime} ? ${info.arpOutTime} : ''" type="text">
+                                                <input class="form-control" name="outTime" placeholder=""
+                                                       th:value="${info.arpOutTime} ? ${info.arpOutTime} : ''" type="datetime-local">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>单日停港费用</strong></label>

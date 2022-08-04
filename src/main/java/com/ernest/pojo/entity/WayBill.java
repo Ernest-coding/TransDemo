@@ -67,7 +67,7 @@ public class WayBill implements Serializable {
     /**
      * 发出时间
      */
-    private LocalDateTime wbSendTime;
+    private String wbSendTime;
 
     /**
      * 收件人姓名
@@ -87,7 +87,7 @@ public class WayBill implements Serializable {
     /**
      * 签收时间
      */
-    private LocalDateTime wbReceTime;
+    private String wbReceTime;
 
     /**
      * 运费金额
@@ -183,11 +183,11 @@ public class WayBill implements Serializable {
         this.wbSendAddress = wbSendAddress;
     }
 
-    public LocalDateTime getWbSendTime() {
+    public String getWbSendTime() {
         return wbSendTime;
     }
 
-    public void setWbSendTime(LocalDateTime wbSendTime) {
+    public void setWbSendTime(String wbSendTime) {
         this.wbSendTime = wbSendTime;
     }
 
@@ -215,11 +215,11 @@ public class WayBill implements Serializable {
         this.wbReceAddress = wbReceAddress;
     }
 
-    public LocalDateTime getWbReceTime() {
+    public String getWbReceTime() {
         return wbReceTime;
     }
 
-    public void setWbReceTime(LocalDateTime wbReceTime) {
+    public void setWbReceTime(String wbReceTime) {
         this.wbReceTime = wbReceTime;
     }
 

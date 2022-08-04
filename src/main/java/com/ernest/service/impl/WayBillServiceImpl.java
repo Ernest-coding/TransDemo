@@ -96,13 +96,13 @@ public class WayBillServiceImpl implements IWayBillService {
     public int addWayBill(WayBill wayBill, String wbSendTime, String wbReceTime) {
         // 解析 wbSendTime
         if (!"null".equals(wbSendTime)) {
-            // TODO 解析时间串
+            wayBill.setWbSendTime(wbSendTime);
         } else {
-            wayBill.setWbSendTime(LocalDateTime.now());
+            wayBill.setWbSendTime(LocalDateTime.now().toString());
         }
         // 解析 wbReceTime
         if (!"null".equals(wbReceTime)) {
-            // TODO 解析时间串
+            wayBill.setWbReceTime(wbReceTime);
         } else {
             wayBill.setWbReceTime(null);
         }
@@ -188,8 +188,7 @@ public class WayBillServiceImpl implements IWayBillService {
         wb.setWbReceName(wbReceName);
         wb.setWbRecePhone(wbRecePhone);
         wb.setWbReceAddress(wbReceAddress);
-        // TODO 解析时间串
-//        wb.setWbReceTime(wbReceTime);
+        wb.setWbReceTime(wbReceTime);
         wb.setWbPrice(new BigDecimal(wbPrice));
         wb.setWbStatus(wbStatus);
         wb.setWbInfo(wbInfo);

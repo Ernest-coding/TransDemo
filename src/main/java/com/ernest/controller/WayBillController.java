@@ -43,7 +43,7 @@ public class WayBillController {
     public String all(ModelMap map) {
         List<WayBill> wbList = wbService.all();
         map.put("wbList", wbList);
-        return "allWayBillPage";
+        return "back/allWayBillPage";
     }
 
     /**
