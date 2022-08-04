@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Innap : Hotel Admin Template">
+
+    <!-- PAGE TITLE HERE -->
+    <title>后台管理</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/star-rating-svg.css}">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+
+<!--**********************************
+    Main wrapper start
+***********************************-->
+<div id="main-wrapper">
+
+    <!--**********************************
+    Nav header start
+***********************************-->
+    <div class="nav-header">
+        <a class="brand-logo" th:href="@{/backIndex}">
+            <img alt="logo" class="img-thumbnail" style="width: 70%; height: auto" th:src="@{/image/logo-4.png}">
+        </a>
+        <div class="nav-control">
+            <div class="hamburger">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Nav header end
+    ***********************************-->
+
+    <!--**********************************
+            Header start
+        ***********************************-->
+    <div class="header">
+        <div class="header-content">
+            <nav class="navbar navbar-expand">
+                <div class=" navbar-nav header-right alert alert-primary alert-dismissible fade show"
+                     style="height:60%; margin-top: 5mm">
+                    <svg class="me-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round"
+                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" x2="9.01" y1="9" y2="9"></line>
+                        <line x1="15" x2="15.01" y1="9" y2="9"></line>
+                    </svg>
+                    <strong>欢迎使用 xx 公司后台管理</strong>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div class="deznav">
+        <div class="deznav-scroll">
+            <ul class="metismenu" id="menu">
+                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-013-checkmark"></i>
+                    <span class="nav-text">用户管理</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/user/allMan}">后台人员</a></li>
+                        <li><a th:href="@{/user/allCus}">客户</a></li>
+                    </ul>
+
+                </li>
+                <!--                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">-->
+                <!--                    <i class="flaticon-025-dashboard"></i>-->
+                <!--                    <span class="nav-text">运单管理</span>-->
+                <!--                </a>-->
+                <!--                    <ul aria-expanded="false">-->
+                <!--                        <li><a th:href="@{/addOrder}">添加运单</a></li>-->
+                <!--                        <li><a th:href="@{/allOrder}">运单列表</a></li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
+                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-025-dashboard"></i>
+                    <span class="nav-text">运输工具管理</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/coy/allCoy}">运输工具列表页</a></li>
+                        <li><a th:href="@{/coy/oneCoy}">运输工具详情页</a></li>
+                    </ul>
+                </li>
+
+                </li>
+                <li><a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-025-dashboard"></i>
+                    <span class="nav-text">运单管理</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/addOrder}">添加运单</a></li>
+                        <li><a th:href="@{/allOrder}">运单列表</a></li>
+                    </ul>
+                </li>
+                <!--留出来富余   后面再看-->
+                <!--<li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-086-star"></i>
+                    <span class="nav-text">日程管理</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/man/addSche}">批量添加日程</a></li>
+                        <li><a th:href="@{/man/viewSche}">查看日程</a></li>
+                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">教室日程管理</a>
+                            <ul aria-expanded="false">
+                                <li><a th:href="@{/man/classScheRoom}">按教室管理日程</a></li>
+                                <li><a th:href="@{/man/classScheTime}">按时间管理日程</a></li>
+                            </ul>
+                        </li>
+                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">会议室日程管理</a>
+                            <ul aria-expanded="false">
+                                <li><a th:href="@{/man/meetScheRoom}">按会议室管理日程</a></li>
+                                <li><a th:href="@{/man/meetScheTime}">按时间管理日程</a></li>
+                            </ul>
+                        </li>
+                        <li><a aria-expanded="false" class="has-arrow" href="javascript:void(0)">实验室日程管理</a>
+                            <ul aria-expanded="false">
+                                <li><a th:href="@{/man/labScheRoom}">按实验室管理日程</a></li>
+                                <li><a th:href="@{/man/labScheTime}">按时间管理日程</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-043-menu"></i>
+                    <span class="nav-text">用户管理</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/man/allManager}">管理员一览</a></li>
+                        <li><a th:href="@{/man/userSet}">用户管理</a></li>
+                        <li><a th:href="@{/man/addUser}">新增用户</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a aria-expanded="false" class="has-arrow ai-icon" th:href="@{#}">
+                    <i class="flaticon-086-star"></i>
+                    <span class="nav-text">个人资料</span>
+                </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/man/user/profile}">个人信息</a></li>
+                    </ul>
+                </li>-->
+            </ul>
+
+        </div>
+    </div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+
+
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">关联运次信息</h4>
+                        <!-- Button trigger modal -->
+
+                        <!-- Modal -->
+                    </div>
+                    <div class="card-body" th:each="info : ${transList}">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row title" style="height:3rem">
+                                    <div>
+                                        <span class="text-dark card-title card-intro-title" style="float: left"
+                                                  th:text="${info.sigTransLine}"></span>
+                                        <span th:class="(${info.sigType} == 1) ? 'badge light badge-danger' : 'badge light badge-success'"
+                                              style="float: right"
+                                              th:text="(${info.sigType} == 1) ? '国内运次' : '国际运次'"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div style="width: 49%; float: left">
+                                        <p>负责人:<span class="badge badge-rounded badge-outline-light"
+                                                        th:text="${info.conveyance.coyPrincipalName}"> # </span></p>
+                                        <p>负责人联系方式: <span class="badge badge-rounded badge-outline-light"
+                                                                 th:text="${info.conveyance.coyPrincipalPhone}"> # </span>
+                                        </p>
+                                        <p>运输工具证件信息: <span class="badge badge-rounded badge-outline-light"
+                                                                   th:text="${info.conveyance.coyLicense}">#</span></p>
+                                        <p>运单发出地: <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.sendAdd}">#</span></p>
+                                        <p>添加时间: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.addTime}">#</span></p>
+                                    </div>
+                                    <div style="width: 49%; float: right">
+                                        <p>运输工具: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.conveyance.coyName}">#</span></p>
+                                        <p>运单号: <span class="badge badge-rounded badge-outline-light"
+                                                               th:text="${info.tranNum} == 1">#</span>
+                                        </p>
+                                        <p>运次状态: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="(${info.sigStatus} == 1) ? '运输中' : '已完成'">#</span>
+                                        </p>
+                                        <p>运单目的地: <span class="badge badge-rounded badge-outline-light"
+                                                       th:text="${info.receAdd}">#</span></p>
+                                        <p>更新时间: <span class="badge badge-rounded badge-outline-light"
+                                                           th:text="${info.updTime}">#</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->
+
+
+<!--**********************************
+    Footer start
+***********************************-->
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright &copy; 2022. Ernest </p>
+    </div>
+</div>
+<!--**********************************
+    Footer end
+***********************************-->
+
+<!--**********************************
+   Support ticket button start
+***********************************-->
+
+<!--**********************************
+   Support ticket button end
+***********************************-->
+
+
+</div>
+<!--**********************************
+    Main wrapper end
+***********************************-->
+
+<!--**********************************
+    Scripts
+***********************************-->
+<!-- Required vendors -->
+<script th:src="@{/js/global.min.js}"></script>
+
+<!-- Rating -->
+<script th:src="@{/js/jquery.star-rating-svg.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/custom.min.js}"></script>
+<script th:src="@{/js/deznav-init.js}"></script>
+<script th:src="@{/js/demo.js}"></script>
+<script th:src="@{/js/styleSwitcher.js}"></script>
+</body>
+</html>

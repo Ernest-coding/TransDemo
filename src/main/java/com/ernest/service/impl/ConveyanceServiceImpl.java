@@ -50,7 +50,7 @@ public class ConveyanceServiceImpl implements IConveyanceService {
 
     @Override
     public ConveyanceListPage oneCoyBaseInfo(Integer id) {
-        Conveyance conveyance = conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("con_id", id));
+        Conveyance conveyance = conveyanceMapper.selectOne(new QueryWrapper<Conveyance>().eq("coy_id", id));
         return convertToConveyanceListPage(conveyance);
     }
 

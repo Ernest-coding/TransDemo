@@ -64,7 +64,7 @@ public class ConveyanceController {
         List<SignalTransPage> transList = conveyanceService.oneCoySignalTrans(id);
         map.put("baseInfo", baseInfo);
         map.put("transList", transList);
-        return "back/oneCoyDetail";
+        return "back/coyDetailPage";
     }
 
     /**
