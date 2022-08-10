@@ -24,18 +24,18 @@ function setImg() {
 
 
     $("#boss-design").attr("src","/Path/image/brands/boss-design.png");
-    $(".brand-01").attr("src","/Path/image/brands/brand-01.png");
-    $(".brand-02").attr("src","/Path/image/brands/brand-02.png");
-    $(".brand-03").attr("src","/Path/image/brands/brand-03.png");
-    $(".brand-04").attr("src","/Path/image/brands/brand-04.png");
-    $(".brand-05").attr("src","/Path/image/brands/brand-05.png");
-    $(".brand-06").attr("src","/Path/image/brands/brand-06.png");
-    $("#brand-012").attr("src","/Path/image/brands/brand-01.png");
-    $("#brand-022").attr("src","/Path/image/brands/brand-02.png");
-    $("#brand-032").attr("src","/Path/image/brands/brand-03.png");
-    $("#brand-042").attr("src","/Path/image/brands/brand-04.png");
-    $("#brand-052").attr("src","/Path/image/brands/brand-05.png");
-    $("#brand-062").attr("src","/Path/image/brands/brand-06.png");
+    $(".brand-012").attr("src","/Path/image/brands/brand-012.png");
+    $(".brand-022").attr("src","/Path/image/brands/brand-022.png");
+    $(".brand-032").attr("src","/Path/image/brands/brand-032.png");
+    $(".brand-042").attr("src","/Path/image/brands/brand-042.png");
+    $(".brand-052").attr("src","/Path/image/brands/brand-052.png");
+    $(".brand-062").attr("src","/Path/image/brands/brand-062.png");
+    $("#brand-012").attr("src","/Path/image/brands/brand-012.png");
+    $("#brand-022").attr("src","/Path/image/brands/brand-022.png");
+    $("#brand-032").attr("src","/Path/image/brands/brand-032.png");
+    $("#brand-042").attr("src","/Path/image/brands/brand-042.png");
+    $("#brand-052").attr("src","/Path/image/brands/brand-052.png");
+    $("#brand-062").attr("src","/Path/image/brands/brand-062.png");
     $("#carrs").attr("src","/Path/image/brands/carrs.png");
     $("#Centrick").attr("src","/Path/image/brands/Centrick.png");
     $("#liberty").attr("src","/Path/image/brands/liberty.png");
