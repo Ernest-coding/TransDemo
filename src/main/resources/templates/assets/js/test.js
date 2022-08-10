@@ -44,6 +44,7 @@ function setImg() {
     $("#cta-img").attr("src","/Path/image/cta/cta-img.png");
     $("#cta-img-02").attr("src","/Path/image/cta/cta-img-02.png");
 
+    $("#gallery-2").attr("src", "/Path/image/gallery/03/gallery-2.jpg");
 
     $("#map").attr("data-background","/Path/image/hero/map.png");
     $("#hero-bg").attr("data-background","/Path/image/hero/hero-bg.jpg");
@@ -110,6 +111,9 @@ function setImg() {
     $("#pr-img12").attr("src", "/Path/image/projects/pr-img12.jpg");
     $("#prm1").attr("src", "/Path/image/projects/prm1.jpg");
 
+
+    $("#sdm1").attr("src", "/Path/image/service/sdm1.jpg");
+    $("#sdm2").attr("src", "/Path/image/service/sdm2.jpg");
 
     $("#cargo-image-sm").attr("src", "/Path/image/slider/cargo-image-sm.png");
     $("#slider-map").attr("src", "/Path/image/slider/slider-map.png");
