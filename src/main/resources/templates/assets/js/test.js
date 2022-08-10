@@ -33,7 +33,7 @@ function setImg() {
     $("#brand-012").attr("src","/Path/image/brands/brand-012.png");
     $("#brand-022").attr("src","/Path/image/brands/brand-022.png");
     $("#brand-032").attr("src","/Path/image/brands/brand-032.png");
-    $("#brand-042").attr("src","/Path/image/brands/brand-042.png");
+    $("#brand-042").attr("src","/Path/image/brands/brand-042.jpg");
     $("#brand-052").attr("src","/Path/image/brands/brand-052.png");
     $("#brand-062").attr("src","/Path/image/brands/brand-062.png");
     $("#carrs").attr("src","/Path/image/brands/carrs.png");
