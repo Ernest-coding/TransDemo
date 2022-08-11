@@ -30,6 +30,11 @@ public class WayBillPage implements Serializable {
     private String wbNum;
 
     /**
+     * 委托公司
+     */
+    private String wbCompany;
+
+    /**
      * 类型 1-国内运单  2-国际运单
      */
     private Integer wbType;

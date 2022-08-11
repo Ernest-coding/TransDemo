@@ -181,10 +181,11 @@ public class WayBillServiceImpl implements IWayBillService {
     }
 
     @Override
-    public void setWbInfo(Integer wbId, String wbReceName, String wbRecePhone,
+    public void setWbInfo(Integer wbId, String wbCompany, String wbReceName, String wbRecePhone,
                           String wbReceAddress, String wbReceTime, String wbPrice,
                           Integer wbStatus, String wbInfo) {
         WayBill wb = wbMapper.selectOne(new QueryWrapper<WayBill>().eq("wb_id", wbId));
+        wb.setWbCompany(wbCompany);
         wb.setWbReceName(wbReceName);
         wb.setWbRecePhone(wbRecePhone);
         wb.setWbReceAddress(wbReceAddress);

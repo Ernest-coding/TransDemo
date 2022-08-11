@@ -75,7 +75,7 @@
                     <line x1="9" x2="9.01" y1="9" y2="9"></line>
                     <line x1="15" x2="15.01" y1="9" y2="9"></line>
                 </svg>
-                <strong>欢迎使用 xx 公司后台管理</strong>
+                <strong>欢迎使用北京中凯国际物流有限公司业务管理系统</strong>
             </div>
         </nav>
     </div>
@@ -166,6 +166,11 @@
                                                         <option selected="selected" value="1">国内运单</option>
                                                         <option value="2">国际运单</option>
                                                     </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>委托方(公司)</strong></label>
+                                                    <input class="form-control" name="wbCompany"
+                                                           placeholder="委托方(公司)" type="text">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="mb-1"><strong>发件人姓名</strong></label>
@@ -279,6 +284,7 @@
                                     <tr>
                                         <th class="align-middle text-center">序号</th>
                                         <th class="align-middle text-center">运单号</th>
+                                        <th class="align-middle text-center">委托方</th>
                                         <th class="align-middle text-center">类型</th>
                                         <th class="align-middle text-center">发件人</th>
                                         <th class="align-middle text-center">收件人</th>
@@ -291,6 +297,7 @@
                                     <tr th:each="info : ${wbList}">
                                         <td class="py-2 text-center" th:text="${infoStat.count}">#</td>
                                         <td class="py-2 text-center" th:text="${info.wbNum}"></td>
+                                        <td class="py-2 text-center" th:text="${info.wbCompany}"></td>
                                         <td class="py-2 text-center"
                                             th:text="(${info.wbType} == 1) ? '国内运单' : '国际运单'"></td>
                                         <td class="py-2 text-center" th:text="${info.wbSendName}"></td>

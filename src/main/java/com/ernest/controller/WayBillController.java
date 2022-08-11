@@ -97,6 +97,7 @@ public class WayBillController {
      */
     @PostMapping("/addWb")
     public String addWb(ModelMap map, HttpSession session,
+                        @RequestParam(name = "wbCompany") String wbCompany,
                         @RequestParam(name = "wbNum") String wbNum,
                         @RequestParam(name = "wbType") Integer wbType,
                         @RequestParam(name = "wbSendName") String wbSendName,
@@ -126,6 +127,7 @@ public class WayBillController {
         WayBill wayBill = new WayBill();
         wayBill.setWbCgiId(index);
         wayBill.setWbNum(wbNum);
+        wayBill.setWbCompany(wbCompany);
         wayBill.setWbType(wbType);
         wayBill.setWbSendName(wbSendName);
         wayBill.setWbSendPhone(wbSendPhone);
@@ -374,6 +376,7 @@ public class WayBillController {
     @PostMapping("/setWbInfo")
     public String setWbInfo(RedirectAttributes attr, ModelMap map, HttpSession session,
                             @RequestParam(name = "wbId") Integer wbId,
+                            @RequestParam(name = "wbCompany") String wbCompany,
                             @RequestParam(name = "wbReceName") String wbReceName,
                             @RequestParam(name = "wbRecePhone") String wbRecePhone,
                             @RequestParam(name = "wbReceAddress") String wbReceAddress,
@@ -385,7 +388,7 @@ public class WayBillController {
             map.put("msg", "您没有权限！");
             return "back/exPage";
         }
-        wbService.setWbInfo(wbId, wbReceName, wbRecePhone, wbReceAddress, wbReceTime,
+        wbService.setWbInfo(wbId, wbCompany, wbReceName, wbRecePhone, wbReceAddress, wbReceTime,
                 wbPrice, wbStatus, wbInfo);
         attr.addAttribute("id", wbId);
         return "redirect:/wb/one";

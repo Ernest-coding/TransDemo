@@ -40,6 +40,11 @@ public class WayBill implements Serializable {
     private Integer wbCgiId;
 
     /**
+     * 委托公司
+     */
+    private String wbCompany;
+
+    /**
      * 类型 1-国内运单  2-国际运单
      */
     private Integer wbType;
@@ -133,6 +138,14 @@ public class WayBill implements Serializable {
 
     public void setWbNum(String wbNum) {
         this.wbNum = wbNum;
+    }
+
+    public String getWbCompany() {
+        return wbCompany;
+    }
+
+    public void setWbCompany(String wbCompany) {
+        this.wbCompany = wbCompany;
     }
 
     public Integer getWbCgiId() {
