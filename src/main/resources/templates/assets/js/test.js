@@ -18,8 +18,8 @@ function setImg() {
     $("#leader2").attr("src", "/Path/image/about/leader2.jpg");
     $("#leader3").attr("src", "/Path/image/about/leader3.jpg");
     $("#leader4").attr("src", "/Path/image/about/leader4.jpg");
-    $("#leader3").attr("src", "/Path/image/about/leader5.jpg");
-    $("#leader4").attr("src", "/Path/image/about/leader6.jpg");
+    $("#leader5").attr("src", "/Path/image/about/leader5.jpg");
+    $("#leader6").attr("src", "/Path/image/about/leader6.jpg");
 
     $(".cta-bg").attr("data-background", "/Path/image/bg/cta-bg.jpg");
     $("#cta-inner-bg").attr("src", "/Path/image/bg/cta-inner-bg.jpg");
